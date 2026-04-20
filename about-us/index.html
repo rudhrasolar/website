@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | Rudhra Solar Greentech</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css" />
+  <link rel="stylesheet" href="/shared.css" />
+  
+  <style>
+    /* =========================================
+       1. TOKENS & RESET (APPROVED LIGHT THEME)
+    ========================================= */
+    :root {
+      --green:   #4a9e38;
+      --orange:  #f48b29;
+      --dark:    #2c3e50; /* Premium Slate */
+      --darker:  #1e293b; /* Premium Navy */
+      --light:   #f8fafc;
+      --white:   #ffffff;
+      --muted:   #64748b;
+      --border:  #e2e8f0;
+      --text:    #334155;
+      --ease:    cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif; 
+      background-color: var(--white);
+      color: var(--text);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* =========================================
+       2. GLOBAL UTILITIES & REVEAL
+    ========================================= */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s var(--ease); }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: 0.1s; }
+    .d2 { transition-delay: 0.2s; }
+    .d3 { transition-delay: 0.3s; }
+    .d4 { transition-delay: 0.4s; }
+    .d5 { transition-delay: 0.5s; }
+
+    /* Standardized Section Headings */
+    .section-head { margin-bottom: 50px; }
+    .section-head .eyebrow {
+      display: block; font-size: 0.75rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 3px;
+      color: var(--orange); margin-bottom: 12px;
+    }
+    .section-head h2 {
+      font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 800;
+      text-transform: uppercase; letter-spacing: -0.5px;
+      color: var(--dark); margin-bottom: 16px; line-height: 1.2;
+    }
+    .section-head h2 span { color: var(--orange); }
+    .section-head p {
+      font-size: 1.05rem; color: var(--muted); line-height: 1.65;
+      max-width: 700px; font-weight: 400;
+    }
+    .section-head.center { text-align: center; }
+    .section-head.center p { margin-inline: auto; }
+
+    /* =========================================
+       3. PAGE BANNER
+    ========================================= */
+    .page-banner {
+      position: relative; height: 400px; display: flex;
+      align-items: center; justify-content: center;
+      overflow: hidden; background: var(--darker);
+    }
+    .page-banner img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; opacity: 0.4;
+    }
+    .page-banner-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(44,62,80,0.5), rgba(30,41,59,0.9));
+    }
+    .page-banner-content { position: relative; z-index: 2; text-align: center; }
+    .page-banner-content h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; color: #fff;
+      letter-spacing: 2px; text-transform: uppercase; margin: 0; text-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+    .page-banner-content p {
+      color: var(--orange); font-size: 1.1rem; font-weight: 700; 
+      text-transform: uppercase; letter-spacing: 2px; margin-top: 10px;
+    }
+    .page-banner-breadcrumb {
+      position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 2;
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.85rem; color: rgba(255,255,255,0.7); font-weight: 500; text-transform: uppercase; letter-spacing: 1px;
+    }
+    .page-banner-breadcrumb a { color: rgba(255,255,255,0.7); text-decoration: none; transition: all 0.3s; }
+    .page-banner-breadcrumb a:hover { color: #fff; }
+    .page-banner-breadcrumb span { color: var(--orange); }
+
+    /* =========================================
+       4. INTRO SECTION
+    ========================================= */
+    .about-intro { padding: 50px 6%; max-width: 1200px; margin: 0 auto; text-align: center; }
+    .about-intro h2 {
+      font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; color: var(--dark);
+      letter-spacing: -0.5px; margin-bottom: 30px; text-transform: uppercase;
+    }
+    .about-intro p { font-size: 1.05rem; color: var(--muted); line-height: 1.8; margin-bottom: 20px; }
+
+    /* =========================================
+       5. GLOBAL LEADER STATS (HOME PAGE MATCHED + FIXED GAP)
+    ========================================= */
+    .global-section {
+      background: var(--light); padding: 50px 6% 100px;
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    }
+    
+    /* Fixed Spacing Grid: Perfect for 5 items, centered, no weird gaps */
+    .stats-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 60px 30px; /* Fixed vertical gap */
+      padding-top: 40px; /* Space to not cut off top circles */
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+    
+    .stat-card {
+      flex: 1 1 320px;
+      max-width: 350px;
+      position: relative;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 50px 30px 30px; /* Increased top padding */
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .stat-card:hover { 
+      transform: translateY(-4px); 
+      box-shadow: 0 15px 30px rgba(0,0,0,0.06); 
+      border-color: rgba(74,158,56,0.3); 
+    }
+    
+    .stat-icon-circle {
+      position: absolute;
+      top: -36px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+    }
+    
+    .stat-num {
+      display: block; font-size: clamp(2.2rem, 4vw, 2.8rem); font-weight: 800;
+      color: var(--dark); line-height: 1; margin-bottom: 8px; letter-spacing: -1px;
+    }
+    .stat-num .sfx { font-size: 0.5em; font-weight: 700; color: var(--orange); }
+    .stat-lbl { display: block; font-size: 0.95rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+
+    /* =========================================
+       6. VISION & MISSION
+    ========================================= */
+    .vision-section { padding: 50px 6%; background: var(--white); }
+    .vision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1140px; margin: 0 auto; }
+    
+    .vision-card {
+      border-radius: 16px; padding: 50px 40px; position: relative; overflow: hidden;
+      transition: all 0.4s; border: 1px solid var(--border);
+    }
+    .vision-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+    
+    .vision-card--vision { background: var(--white); box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
+    .vision-card--mission { background: var(--darker); border: none; } /* Theme matched dark card */
+    
+    .vision-card::after {
+      content: ''; position: absolute; bottom: -80px; right: -80px;
+      width: 250px; height: 250px; border-radius: 50%;
+      background: rgba(244,139,41,0.05); pointer-events: none;
+    }
+    .vision-card--mission::after { background: rgba(74,158,56,0.05); }
+
+    .vision-card-icon {
+      width: 60px; height: 60px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem; margin-bottom: 25px;
+    }
+    .vision-card--vision .vision-card-icon  { background: rgba(244,139,41,0.1); color: var(--orange); }
+    .vision-card--mission .vision-card-icon { background: rgba(255,255,255,0.1); color: var(--green); }
+
+    .vision-card h3 { font-size: 1.8rem; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; letter-spacing: -0.5px; }
+    .vision-card--vision h3  { color: var(--dark); }
+    .vision-card--mission h3 { color: #fff; }
+
+    .vision-card p { font-size: 1.05rem; line-height: 1.8; margin-bottom: 15px; }
+    .vision-card--vision p  { color: var(--muted); }
+    .vision-card--mission p { color: #cbd5e1; }
+
+    .vision-card ul { list-style:none; margin-top:25px; padding:0; display:flex; flex-direction:column; gap:15px; }
+    .vision-card ul li { display:flex; align-items:flex-start; gap:12px; font-size:1.05rem; color: #f8fafc; }
+    .vision-card ul li i { color: var(--green); margin-top:4px; flex-shrink:0; }
+
+    /* =========================================
+       7. QUALITY & CERTIFICATIONS
+    ========================================= */
+    .quality-section {
+      background: var(--light); padding: 50px 6%; text-align: center;
+      border-top: 1px solid var(--border);
+    }
+    .cert-grid {
+      display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;
+      max-width: 1140px; margin: 0 auto;
+    }
+    .cert-badge {
+      background: var(--white); border: 1px solid var(--border); border-radius: 12px;
+      padding: 40px 30px; flex: 1 1 200px; max-width: 260px;
+      display: flex; flex-direction: column; align-items: center; gap: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.02); transition: all 0.3s;
+    }
+    .cert-badge:hover { border-color: rgba(74,158,56,0.3); box-shadow: 0 15px 30px rgba(0,0,0,0.06); transform: translateY(-8px); }
+    
+    .cert-icon {
+      font-size: 3.5rem; color: var(--green); margin-bottom: 10px;
+      transition: transform 0.3s;
+    }
+    .cert-badge:hover .cert-icon { transform: scale(1.1); color: var(--orange); }
+
+    .cert-name { font-size: 1.15rem; font-weight: 800; color: var(--dark); text-transform: uppercase; letter-spacing: 0.5px; }
+    .cert-desc { font-size: 0.9rem; color: var(--muted); text-align: center; line-height: 1.5; margin: 0; font-weight: 500;}
+
+    /* =========================================
+       8. RESPONSIVE
+    ========================================= */
+    @media(max-width:992px) {
+      .vision-grid { grid-template-columns: 1fr; }
+    }
+    @media(max-width:768px) {
+      .stats-grid { gap: 50px 20px; padding-top: 40px; }
+      .stat-card { max-width: 100%; }
+      .page-banner { height: 300px; }
+      .cert-badge { padding: 30px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <script src="/header.js"></script>
+
+  <section class="page-banner reveal">
+    <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1920&q=80" alt="Solar panels background">
+    <div class="page-banner-overlay"></div>
+    <div class="page-banner-content">
+      <h1>About Us</h1>
+      <p>Pioneering Solar Excellence</p>
+    </div>
+    <div class="page-banner-breadcrumb">
+      <a href="index.html">Home</a>
+      <i class="fas fa-chevron-right" style="font-size:0.6rem;"></i>
+      <span>About Us</span>
+    </div>
+  </section>
+
+  <section class="about-intro reveal">
+    <h2>The Energy to Make an Impact</h2>
+    <p>Rudhra Solar Greentech is a premier solar O&amp;M company founded in 2016. We provide advanced, fully autonomous robotic services — cost-effectively maximising the performance of utility-scale PV sites all over India.</p>
+    <p>With over 8 years of expertise, our outstanding team of engineers, technicians, and operations professionals bring to the market the most safe and reliable solar maintenance services — designed to meet any challenge, supported by experienced O&amp;M specialists.</p>
+    <p>We continue to grow as one of India's most trusted solar energy management partners, offering the widest range of robotic cleaning and on-ground manpower services in the market.</p>
+  </section>
+
+  <section class="global-section">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Our Reach</span>
+      <h2>An Ever Growing <span>Global Leader</span></h2>
+    </div>
+    
+    <div class="stats-grid">
+      
+      <div class="stat-card reveal d1">
+        <div class="stat-icon-circle">
+          <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
+            <defs>
+              <linearGradient id="ecoGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#4a9e38"/><stop offset="100%" stop-color="#f48b29"/>
+              </linearGradient>
+            </defs>
+            <circle cx="36" cy="36" r="35" stroke="url(#ecoGrad1)" stroke-width="2.5" fill="#ffffff"/>
+            <path d="M40 20L24 38H36L32 52L48 32H36L40 20Z" stroke="#334155" stroke-width="2" stroke-linejoin="round"/>
+            <line x1="20" y1="26" x2="24" y2="28" stroke="#334155" stroke-width="2" stroke-linecap="round"/>
+            <line x1="52" y1="44" x2="48" y2="42" stroke="#334155" stroke-width="2" stroke-linecap="round"/>
+            <line x1="48" y1="24" x2="44" y2="26" stroke="#334155" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="stat-num">+<span class="counter" data-target="4000">0</span> <span class="sfx">MW</span></span>
+        <span class="stat-lbl">Developments</span>
+      </div>
+
+      <div class="stat-card reveal d2">
+        <div class="stat-icon-circle">
+          <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
+            <circle cx="36" cy="36" r="35" stroke="url(#ecoGrad1)" stroke-width="2.5" fill="#ffffff"/>
+            <path d="M28 34V46L36 42L44 46V34" stroke="#334155" stroke-width="2" stroke-linejoin="round"/>
+            <circle cx="36" cy="28" r="8" stroke="#334155" stroke-width="2" fill="#fff"/>
+            <circle cx="36" cy="28" r="3" fill="#334155"/>
+          </svg>
+        </div>
+        <span class="stat-num">+<span class="counter" data-target="20">0</span></span>
+        <span class="stat-lbl">Patents Granted</span>
+      </div>
+
+      <div class="stat-card reveal d3">
+        <div class="stat-icon-circle">
+          <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
+            <circle cx="36" cy="36" r="35" stroke="url(#ecoGrad1)" stroke-width="2.5" fill="#ffffff"/>
+            <path d="M26 20H40L46 26V50H26V20Z" stroke="#334155" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M40 20V26H46" stroke="#334155" stroke-width="2" stroke-linejoin="round"/>
+            <line x1="30" y1="32" x2="38" y2="32" stroke="#334155" stroke-width="2" stroke-linecap="round"/>
+            <path d="M30 44C32 40 34 48 36 44C38 40 40 46 42 42" stroke="#f48b29" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="stat-num">+<span class="counter" data-target="10000">0</span> <span class="sfx">MW</span></span>
+        <span class="stat-lbl">Signed Agreements</span>
+      </div>
+
+      <div class="stat-card reveal d4">
+        <div class="stat-icon-circle">
+          <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
+            <circle cx="36" cy="36" r="35" stroke="url(#ecoGrad1)" stroke-width="2.5" fill="#ffffff"/>
+            <path d="M20 36L26 22H52L46 36H20Z" stroke="#334155" stroke-width="2" stroke-linejoin="round"/>
+            <line x1="28" y1="22" x2="22" y2="36" stroke="#334155" stroke-width="2"/>
+            <line x1="36" y1="22" x2="30" y2="36" stroke="#334155" stroke-width="2"/>
+            <line x1="44" y1="22" x2="38" y2="36" stroke="#334155" stroke-width="2"/>
+            <line x1="23" y1="29" x2="49" y2="29" stroke="#334155" stroke-width="2"/>
+            <path d="M33 36V46" stroke="#334155" stroke-width="2"/>
+            <path d="M39 36V46" stroke="#334155" stroke-width="2"/>
+            <path d="M28 46H44" stroke="#334155" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="stat-num">+<span class="counter" data-target="10.5" data-float="true">0</span> <span class="sfx">B</span></span>
+        <span class="stat-lbl">Panels Cleaned</span>
+      </div>
+
+      <div class="stat-card reveal d5">
+        <div class="stat-icon-circle">
+          <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
+            <circle cx="36" cy="36" r="35" stroke="url(#ecoGrad1)" stroke-width="2.5" fill="#ffffff"/>
+            <path d="M36 22C36 22 24 34 24 42C24 48.6274 29.3726 54 36 54C42.6274 54 48 48.6274 48 42C48 34 36 22 36 22Z" stroke="#334155" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M30 42C30 38 32 35 34 34" stroke="#334155" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="stat-num">+<span class="counter" data-target="5">0</span> <span class="sfx">B</span></span>
+        <span class="stat-lbl">Litres Water Saved</span>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="vision-section">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Purpose</span>
+      <h2>Our <span>Vision &amp; Mission</span></h2>
+    </div>
+    
+    <div class="vision-grid">
+      <div class="vision-card vision-card--vision reveal d1">
+        <div class="vision-card-icon"><i class="fas fa-eye"></i></div>
+        <h3>Our Vision</h3>
+        <p>To be India's most trusted and innovative solar energy management company — driving the clean energy revolution through technology, reliability, and an uncompromising commitment to performance.</p>
+        <p>We envision a future where every solar asset operates at its maximum potential, every day — enabling our clients and the planet to thrive together sustainably.</p>
+      </div>
+
+      <div class="vision-card vision-card--mission reveal d2">
+        <div class="vision-card-icon"><i class="fas fa-rocket"></i></div>
+        <h3>Our Mission</h3>
+        <p>To deliver world-class solar O&amp;M services that maximise energy yield and profitability for our clients — through cutting-edge robotics, skilled manpower, and data-driven operations excellence.</p>
+        <ul>
+          <li><i class="fas fa-check-circle"></i> Deploy advanced autonomous cleaning technology</li>
+          <li><i class="fas fa-check-circle"></i> Build India's most skilled solar workforce</li>
+          <li><i class="fas fa-check-circle"></i> Reduce water usage through dry robotic cleaning</li>
+          <li><i class="fas fa-check-circle"></i> Deliver measurable ROI for every client</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="quality-section">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Standards</span>
+      <h2>Certified for <span>Quality &amp; Control</span></h2>
+      <p>Our processes, research, and deployment centres are fully certified to the highest standards of quality and control — ensuring resiliency across all verticals of our business.</p>
+    </div>
+    
+    <div class="cert-grid">
+      <div class="cert-badge reveal d1">
+        <div class="cert-icon"><i class="fas fa-award"></i></div>
+        <div class="cert-name">ISO 9001</div>
+        <p class="cert-desc">Quality Management System</p>
+      </div>
+      
+      <div class="cert-badge reveal d2">
+        <div class="cert-icon"><i class="fas fa-leaf"></i></div>
+        <div class="cert-name">ISO 14001</div>
+        <p class="cert-desc">Environmental Management</p>
+      </div>
+      
+      <div class="cert-badge reveal d3">
+        <div class="cert-icon"><i class="fas fa-hard-hat"></i></div>
+        <div class="cert-name">ISO 45001</div>
+        <p class="cert-desc">Occupational Health &amp; Safety</p>
+      </div>
+      
+      <div class="cert-badge reveal d4">
+        <div class="cert-icon"><i class="fas fa-certificate"></i></div>
+        <div class="cert-name">CE Certified</div>
+        <p class="cert-desc">European Conformity Standard</p>
+      </div>
+    </div>
+  </section>
+
+  <script src="/footer.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // 1. Unified Scroll Reveal Logic
+      const ro = new IntersectionObserver((entries, obs) => {
+        entries.forEach(e => {
+          if (!e.isIntersecting) return;
+          e.target.classList.add('active');
+          obs.unobserve(e.target);
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+      // 2. Number Counter Logic (Fixed for Float Support)
+      function easeOutQuart(t) { return 1 - Math.pow(1 - t, 4); }
+      
+      function animateCounter(el, target, duration, isFloat) {
+        const start = performance.now();
+        function update(now) {
+          const progress = Math.min((now - start) / duration, 1);
+          const currentVal = easeOutQuart(progress) * target;
+          
+          if (isFloat) {
+            el.textContent = currentVal.toFixed(currentVal % 1 === 0 ? 0 : 1);
+          } else {
+            el.textContent = Math.floor(currentVal).toLocaleString();
+          }
+          
+          if (progress < 1) requestAnimationFrame(update);
+          else el.textContent = isFloat ? target : target.toLocaleString();
+        }
+        requestAnimationFrame(update);
+      }
+
+      const statsSection = document.querySelector('.global-section');
+      const counters = document.querySelectorAll('.counter');
+      
+      if (statsSection && counters.length > 0) {
+        const statsObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              counters.forEach((counter, index) => {
+                const target = parseFloat(counter.dataset.target);
+                const isFloat = counter.dataset.float === 'true';
+                setTimeout(() => {
+                    animateCounter(counter, target, 2000, isFloat);
+                }, (index + 1) * 100);
+              });
+              statsObserver.unobserve(statsSection);
+            }
+          });
+        }, { threshold: 0.2 }); 
+        statsObserver.observe(statsSection);
+      }
+    });
+  </script>
+</body>
+</html>

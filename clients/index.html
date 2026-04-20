@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Clients & Case Studies | Rudhra Solar Energy</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css" />
+    <link rel="stylesheet" href="/shared.css" />
+    
+    <style>
+      /* ===== 1. PREMIUM DESIGN TOKENS (Rudhra THEME) ===== */
+      :root {
+        --brand-orange: #ff6b00;
+        --brand-lime: #b4f14c;
+        --bg-light: #f8fafc;
+        --bg-dark: #0f172a;
+        --text-main: #1e293b;
+        --text-muted: #64748b;
+        --surface-white: #ffffff;
+        --border-light: #e2e8f0;
+        --shadow-soft: 0 10px 40px -10px rgba(0,0,0,0.08);
+        --shadow-hover: 0 20px 40px -5px rgba(0,0,0,0.15);
+        --radius-md: 12px;
+        --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      body {
+        margin: 0; font-family: 'Poppins', sans-serif; 
+        background-color: var(--bg-light); color: var(--text-main);
+        overflow-x: hidden;
+      }
+
+      /* ===== 2. STAGGERED SCROLL REVEAL ===== */
+      .reveal {
+        opacity: 0; transform: translateY(40px);
+        transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: opacity, transform;
+      }
+      .reveal.active { opacity: 1; transform: translateY(0); }
+
+      /* ===== 3. PAGE BANNER (Rudhra STYLE) ===== */
+      .page-banner {
+        margin-top: 72px; position: relative; height: 380px;
+        display: flex; align-items: center; justify-content: center;
+        overflow: hidden; background: var(--bg-dark);
+      }
+      .page-banner img {
+        position: absolute; inset: 0; width: 100%; height: 100%;
+        object-fit: cover; opacity: 0.35;
+      }
+      .page-banner-overlay {
+        position: absolute; inset: 0;
+        background: linear-gradient(to bottom, rgba(15,23,42,0.2), rgba(15,23,42,0.9));
+      }
+      .page-banner-content { position: relative; z-index: 2; text-align: center; }
+      .page-banner-content h1 {
+        font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; color: #fff;
+        letter-spacing: 2px; text-transform: uppercase; margin: 0; text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      }
+      .page-banner-breadcrumb {
+        position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 2;
+        display: flex; align-items: center; gap: 10px;
+        font-size: 0.85rem; color: rgba(255,255,255,0.6); font-weight: 500;
+      }
+      .page-banner-breadcrumb a { color: rgba(255,255,255,0.6); text-decoration: none; transition: var(--transition-smooth); }
+      .page-banner-breadcrumb a:hover { color: #fff; }
+      .page-banner-breadcrumb span { color: var(--brand-orange); }
+
+      /* ===== SECTION HEADERS ===== */
+      .section-header { text-align: center; max-width: 800px; margin: 0 auto 60px; }
+      .section-subtitle { font-size: 0.85rem; font-weight: 700; color: var(--brand-orange); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; display: block; }
+      .section-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; color: var(--text-main); letter-spacing: -1px; margin-bottom: 20px; }
+      .section-title strong { font-weight: 800; }
+
+      /* ===== 4. CLIENTS GRID ===== */
+      .clients-section { padding: 100px 20px; background-color: var(--bg-light); text-align: center; border-bottom: 1px solid var(--border-light); }
+      .clients-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px; max-width: 1200px; margin: 0 auto; }
+      .client-logo-box {
+        background-color: var(--surface-white); padding: 30px; aspect-ratio: 3 / 2; display: flex; align-items: center; justify-content: center;
+        transition: var(--transition-smooth); border-radius: var(--radius-md); box-shadow: var(--shadow-soft); border: 1px solid var(--border-light);
+      }
+      .client-logo-box:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); border-color: rgba(255,107,0,0.3); }
+      .client-logo-box img { max-width: 100%; max-height: 100%; object-fit: contain; filter: grayscale(100%); opacity: 0.6; transition: var(--transition-smooth); }
+      .client-logo-box:hover img { filter: grayscale(0%); opacity: 1; }
+
+      /* ===== 5. CASE STUDY WITH IMAGE SLIDER ===== */
+      .case-study-section { padding: 120px 20px; background: var(--surface-white); }
+      .case-study-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto; align-items: center; }
+      
+      .case-content h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; color: var(--text-main); margin-bottom: 10px; }
+      .case-content h2 strong { font-weight: 800; }
+      .case-content h3 { font-size: 1.4rem; font-weight: 700; color: var(--text-main); margin-bottom: 5px; margin-top: 20px;}
+      .case-content .capacity { font-size: 1rem; font-weight: 600; color: var(--brand-orange); display: block; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;}
+      .case-content p { font-size: 1.05rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 30px; }
+      
+      .btn-primary {
+        display: inline-flex; align-items: center; gap: 10px; background: var(--brand-orange); color: #fff;
+        font-size: 0.95rem; font-weight: 700; padding: 16px 36px; border-radius: 50px;
+        text-decoration: none; text-transform: uppercase; letter-spacing: 0.5px; transition: var(--transition-smooth);
+        box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3); border: none; cursor: pointer;
+      }
+      .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(255, 107, 0, 0.4); }
+
+      /* Image Slider CSS */
+      .case-image { 
+        border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-soft); 
+        position: relative; height: 500px; 
+      }
+      
+      .slider-container { position: absolute; inset: 0; width: 100%; height: 100%; }
+      
+      .slide { 
+        position: absolute; inset: 0; width: 100%; height: 100%; 
+        opacity: 0; transition: opacity 0.8s ease-in-out; 
+      }
+      .slide.active { opacity: 1; z-index: 1; }
+      .slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+      
+      /* Carousel dots */
+      .carousel-dots { position: absolute; bottom: 25px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 2; }
+      .dot { width: 12px; height: 12px; border-radius: 50%; border: 2px solid #fff; cursor: pointer; opacity: 0.5; transition: 0.3s; background: transparent; }
+      .dot.active, .dot:hover { background: #fff; opacity: 1; transform: scale(1.1); }
+
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 1024px) {
+        .clients-grid { grid-template-columns: repeat(4, 1fr); }
+      }
+      @media (max-width: 900px) {
+        .case-study-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+        .case-image { height: 350px; }
+      }
+      @media (max-width: 600px) {
+        .clients-grid { grid-template-columns: repeat(2, 1fr); }
+        .page-banner { height: 300px; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <script src="/header.js"></script>
+
+    <section class="page-banner reveal">
+      <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1920&q=80" alt="Solar Farm">
+      <div class="page-banner-overlay"></div>
+      <div class="page-banner-content">
+        <h1>Selected Projects</h1>
+      </div>
+      <div class="page-banner-breadcrumb">
+        <a href="/">Home</a>
+        <i class="fas fa-chevron-right" style="font-size:0.6rem;"></i>
+        <span>Projects</span>
+      </div>
+    </section>
+
+    <section class="clients-section">
+      <div class="section-header reveal">
+        <span class="section-subtitle">Our Partners</span>
+        <h2 class="section-title">Tier-1 <strong>Clients</strong></h2>
+      </div>
+      
+      <div class="clients-grid">
+        <div class="client-logo-box reveal stagger-1"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Fortum_logo.svg/2560px-Fortum_logo.svg.png" alt="Fortum"></div>
+        <div class="client-logo-box reveal stagger-2"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/NTPC_Logo.svg/1200px-NTPC_Logo.svg.png" alt="NTPC"></div>
+        <div class="client-logo-box reveal stagger-3"><img src="https://via.placeholder.com/150x50/ffffff/1e293b?text=Azure+Power" alt="Azure Power"></div>
+        <div class="client-logo-box reveal stagger-4"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Adani_Group_logo.svg/2560px-Adani_Group_logo.svg.png" alt="Adani Solar"></div>
+        <div class="client-logo-box reveal stagger-5"><img src="https://via.placeholder.com/150x50/ffffff/1e293b?text=Enlight" alt="Enlight"></div>
+        <div class="client-logo-box reveal stagger-6"><img src="https://via.placeholder.com/150x50/ffffff/1e293b?text=Arava+Power" alt="Arava Power"></div>
+        
+        <div class="client-logo-box reveal stagger-1"><img src="https://via.placeholder.com/150x50/ffffff/1e293b?text=ReNew+Power" alt="ReNew"></div>
+        <div class="client-logo-box reveal stagger-2"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/ENGIE_logo_2015.svg/2560px-ENGIE_logo_2015.svg.png" alt="ENGIE"></div>
+        <div class="client-logo-box reveal stagger-3"><img src="https://via.placeholder.com/150x50/ffffff/1e293b?text=Sprng+Energy" alt="Sprng"></div>
+        <div class="client-logo-box reveal stagger-4"><img src="https://via.placeholder.com/150x50/ffffff/1e293b?text=Shikun+Binui" alt="Shikun Binui"></div>
+        <div class="client-logo-box reveal stagger-5"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/TotalEnergies_logo.svg/2560px-TotalEnergies_logo.svg.png" alt="TotalEnergies"></div>
+        <div class="client-logo-box reveal stagger-6"><img src="https://via.placeholder.com/150x50/ffffff/1e293b?text=Solegreen" alt="Solegreen"></div>
+      </div>
+    </section>
+
+    <section class="case-study-section">
+      <div class="case-study-grid">
+        
+        <div class="case-content reveal stagger-1">
+          <h2>Case <strong>Study</strong></h2>
+          <h3>Bikaner Solar Park | Rajasthan, India</h3>
+          <span class="capacity">350MW Capacity</span>
+          <p>Bikaner solar Park is located in the north part of Rajasthan surrounded by the Thar Desert. While providing optimal irradiation, this geographic location poses great challenges in terms of soiling losses, which fluctuate between 17-25%. As such, it requires between 12-36 conventional wet manual cleaning cycles.</p>
+          <a href="#" class="btn-primary">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="case-image reveal stagger-2">
+          <div class="slider-container">
+            <div class="slide active">
+              <img src="https://images.unsplash.com/photo-1592833159155-c62df1b65634?auto=format&fit=crop&w=1200&q=80" alt="Solar Robot Cleaning 1">
+            </div>
+            <div class="slide">
+              <img src="https://images.unsplash.com/photo-1521618755572-156ae0cdd74d?auto=format&fit=crop&w=1200&q=80" alt="Solar Robot Cleaning 2">
+            </div>
+            <div class="slide">
+              <img src="https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&w=1200&q=80" alt="Solar Robot Cleaning 3">
+            </div>
+          </div>
+          
+          <div class="carousel-dots">
+            <div class="dot active" data-slide="0"></div>
+            <div class="dot" data-slide="1"></div>
+            <div class="dot" data-slide="2"></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <script src="/footer.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        
+        // 1. Scroll Reveal
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const el = entry.target;
+              let delay = 0;
+              if(el.classList.contains('stagger-1')) delay = 100;
+              if(el.classList.contains('stagger-2')) delay = 250;
+              if(el.classList.contains('stagger-3')) delay = 400;
+              if(el.classList.contains('stagger-4')) delay = 550;
+              if(el.classList.contains('stagger-5')) delay = 700;
+              if(el.classList.contains('stagger-6')) delay = 850;
+
+              setTimeout(() => {
+                el.classList.add('active');
+              }, delay);
+
+              observer.unobserve(el);
+            }
+          });
+        }, { threshold: 0.1 }); 
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // 2. Image Slider Logic
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        let currentSlide = 0;
+        let slideInterval;
+
+        function showSlide(index) {
+          // Remove active class from all
+          slides.forEach(slide => slide.classList.remove('active'));
+          dots.forEach(dot => dot.classList.remove('active'));
+          
+          // Add active class to current
+          slides[index].classList.add('active');
+          dots[index].classList.add('active');
+          currentSlide = index;
+        }
+
+        function nextSlide() {
+          let next = (currentSlide + 1) % slides.length;
+          showSlide(next);
+        }
+
+        // Start auto slide
+        function startSlide() {
+          slideInterval = setInterval(nextSlide, 4000); // Change image every 4 seconds
+        }
+
+        // Click on dots to change image manually
+        dots.forEach((dot, index) => {
+          dot.addEventListener('click', () => {
+            clearInterval(slideInterval); // Stop auto-slide when user clicks
+            showSlide(index);
+            startSlide(); // Restart auto-slide timer
+          });
+        });
+
+        // Initialize Slider
+        if(slides.length > 0) {
+            startSlide();
+        }
+
+      });
+    </script>
+  </body>
+</html>

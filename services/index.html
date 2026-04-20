@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Services | Rudhra Solar Greentech</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css" />
+  <link rel="stylesheet" href="/shared.css" />
+  
+  <style>
+    /* =========================================
+       1. TOKENS & RESET (APPROVED LIGHT THEME)
+    ========================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-light);
+      color: var(--text);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* =========================================
+       2. GLOBAL UTILITIES (Reveal & Headings)
+    ========================================= */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s var(--ease); }
+    .reveal.active { opacity: 1; transform: none; }
+    .d1 { transition-delay: 0.08s; }
+    .d2 { transition-delay: 0.16s; }
+    .d3 { transition-delay: 0.24s; }
+    .d4 { transition-delay: 0.32s; }
+    .d5 { transition-delay: 0.40s; }
+    .d6 { transition-delay: 0.48s; }
+
+    /* Standardized Section Headings (Same as Home) */
+    .section-head { margin-bottom: 50px; }
+    .section-head .eyebrow {
+      display: block; font-size: 0.75rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 3px;
+      color: var(--orange); margin-bottom: 12px;
+    }
+    .section-head h2 {
+      font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 800;
+      text-transform: uppercase; letter-spacing: -0.5px;
+      color: var(--dark); margin-bottom: 16px; line-height: 1.2;
+    }
+    .section-head h2 span { color: var(--orange); }
+    .section-head p {
+      font-size: 1.05rem; color: var(--muted); line-height: 1.65;
+      max-width: 700px; font-weight: 400;
+    }
+    .section-head.center { text-align: center; }
+    .section-head.center p { margin-inline: auto; }
+    .section-head.light h2, .section-head.light p { color: rgba(255, 255, 255, 0.95); }
+
+    /* =========================================
+       3. GLOBAL BUTTON SYSTEM (Uniform Layout)
+    ========================================= */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      font-family: 'Poppins', sans-serif; font-size: 0.85rem; font-weight: 700;
+      padding: 14px 34px; border-radius: 4px;
+      text-decoration: none; text-transform: uppercase; letter-spacing: 0.6px;
+      transition: all 0.3s var(--ease); cursor: pointer; border: 2px solid transparent;
+    }
+    .btn i { font-size: 14px; transition: transform 0.3s; }
+    .btn:hover i { transform: translateX(5px); }
+
+    .btn-primary { background: var(--green); color: #fff; }
+    .btn-primary:hover { background: #3a8429; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(74,158,56,0.3); }
+
+    /* =========================================
+       4. PAGE BANNER
+    ========================================= */
+    .page-banner {
+      position: relative; height: 400px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; background: var(--darker);
+    }
+    .page-banner img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; opacity: 0.4;
+    }
+    .page-banner-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(44,62,80,0.5), rgba(30,41,59,0.9)); /* Lightened Dark Overlay */
+    }
+    .page-banner-content { position: relative; z-index: 2; text-align: center; }
+    .page-banner-content h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; color: #fff;
+      letter-spacing: 2px; text-transform: uppercase; margin: 0; text-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+    .page-banner-breadcrumb {
+      position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 2;
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.85rem; color: rgba(255,255,255,0.7); font-weight: 500; text-transform: uppercase; letter-spacing: 1px;
+    }
+    .page-banner-breadcrumb a { color: rgba(255,255,255,0.7); text-decoration: none; transition: var(--ease); }
+    .page-banner-breadcrumb a:hover { color: #fff; }
+    .page-banner-breadcrumb span { color: var(--orange); }
+
+    /* =========================================
+       5. SERVICES GRID
+    ========================================= */
+    .services-section { padding: 50px 6%; background: var(--light); position: relative; }
+    
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;
+      max-width: 1140px; margin: 0 auto; position: relative; z-index: 1;
+    }
+    
+    .service-card {
+      background: var(--white); border: 1px solid var(--border); border-radius: 12px;
+      overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+      transition: all 0.3s; text-decoration: none;
+    }
+    .service-card:hover { border-color: rgba(74,158,56,0.3); transform: translateY(-6px); box-shadow: 0 15px 30px rgba(0,0,0,0.06); }
+    
+    .service-img-wrap { height: 240px; overflow: hidden; position: relative; }
+    .service-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+    .service-card:hover .service-img-wrap img { transform: scale(1.05); }
+    
+    .service-content { padding: 30px 24px; text-align: center; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .service-content h3 { font-size: 1.15rem; font-weight: 800; color: var(--dark); margin-bottom: 20px; line-height: 1.4; text-transform: uppercase; }
+    
+    .read-more-link {
+      font-size: 0.85rem; font-weight: 700; color: var(--green); text-transform: uppercase;
+      letter-spacing: 0.5px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.3s;
+    }
+    .service-card:hover .read-more-link { color: var(--orange); }
+    .read-more-link i { transition: transform 0.3s; }
+    .service-card:hover .read-more-link i { transform: translateX(5px); }
+
+    /* =========================================
+       6. MID CTA PARALLAX
+    ========================================= */
+    .mid-cta-section {
+      position: relative; padding: 60px 6%; text-align: center;
+      background-image: url('https://images.unsplash.com/photo-1548337138-e87d889cc369?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover; background-position: center; background-attachment: fixed;
+    }
+    .mid-cta-overlay { position: absolute; inset: 0; background: linear-gradient(rgba(30,41,59,0.7), rgba(30,41,59,0.9)); z-index: 1; }
+    .mid-cta-content { position: relative; z-index: 2; max-width: 900px; margin: 0 auto; }
+    .mid-cta-content h2 { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300; color: #fff; margin-bottom: 20px; line-height: 1.2; text-transform: uppercase; }
+    .mid-cta-content h2 strong { font-weight: 800; color: var(--green); }
+    .mid-cta-content p { font-size: 1.15rem; color: rgba(255,255,255,0.85); margin-bottom: 40px; line-height: 1.8; }
+
+    /* =========================================
+       7. ABOUT SNIPPET
+    ========================================= */
+    .about-snippet-section { padding: 50px 6%; background: var(--white); border-bottom: 1px solid var(--border); }
+    .about-snippet-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1140px; margin: 0 auto; align-items: center; }
+    .about-snippet-img { border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+    .about-snippet-img img { width: 100%; height: auto; display: block; }
+    
+    /* =========================================
+       8. CLIENTS & CONTACT (Matching Home Page)
+    ========================================= */
+    .clients-section { padding: 50px 6%; background: var(--light); border-bottom: 1px solid var(--border); }
+    .clients-inner { max-width: 1040px; margin: 0 auto; }
+    .clients-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+    .client-box {
+      background: var(--white); border: 1px solid var(--border); border-radius: 4px;
+      padding: 14px 10px; aspect-ratio: 3/2; display: flex; align-items: center; justify-content: center;
+      transition: all 0.25s; box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+    .client-box:hover { border-color: var(--green); box-shadow: 0 4px 14px rgba(0,0,0,0.06); transform: translateY(-2px); }
+    .client-box img { max-width: 80%; max-height: 32px; object-fit: contain; filter: grayscale(1); opacity: 0.6; transition: all 0.25s; }
+    .client-box:hover img { filter: none; opacity: 1; }
+
+    .contact-section { padding: 50px 6%; background: var(--white); }
+    .contact-inner { max-width: 1040px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .why-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .why-list li {
+      background: var(--light); border: 1px solid var(--border); border-radius: 6px;
+      padding: 16px 20px; display: flex; align-items: center; gap: 16px; transition: all 0.3s;
+    }
+    .why-list li:hover { border-color: rgba(74,158,56,0.3); transform: translateX(5px); background: var(--white); box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
+    .why-list li i { font-size: 16px; color: var(--green); flex-shrink: 0; }
+    .why-list li span { font-size: 0.85rem; font-weight: 600; color: var(--dark); }
+    
+    .contact-card {
+      background: var(--white); border: 1px solid var(--border); border-radius: 8px;
+      padding: 40px 32px; box-shadow: 0 12px 40px rgba(0,0,0,0.05);
+    }
+    .contact-card h3 { font-size: 1.2rem; font-weight: 800; text-transform: uppercase; margin-bottom: 8px; color: var(--dark); }
+    .contact-card > p { font-size: 0.85rem; color: var(--muted); margin-bottom: 24px; line-height: 1.6; }
+    .cform { display: flex; flex-direction: column; gap: 16px; }
+    .cform-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .cform input, .cform textarea {
+      width: 100%; padding: 14px 16px; background: var(--light); border: 1px solid var(--border);
+      border-radius: 6px; font-family: 'Poppins', sans-serif; font-size: 0.85rem; color: var(--dark);
+      transition: all 0.3s;
+    }
+    .cform input:focus, .cform textarea:focus { outline: none; border-color: var(--green); background: var(--white); box-shadow: 0 0 0 3px rgba(74,158,56,0.12); }
+    .cform textarea { resize: vertical; min-height: 110px; }
+    .cform .btn { width: 100%; margin-top: 8px; }
+
+    /* =========================================
+       9. RESPONSIVE
+    ========================================= */
+    @media (max-width: 1024px) {
+      .clients-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    @media (max-width: 900px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-snippet-grid, .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+      .page-banner { height: 300px; }
+      .clients-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .services-grid { grid-template-columns: 1fr; max-width: 480px; margin-inline: auto; }
+      .clients-grid { grid-template-columns: repeat(2, 1fr); }
+      .cform-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <script src="/header.js"></script>
+
+  <section class="page-banner reveal">
+    <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1920&q=80" alt="Solar Farm">
+    <div class="page-banner-overlay"></div>
+    <div class="page-banner-content">
+      <h1>Our Services</h1>
+    </div>
+    <div class="page-banner-breadcrumb">
+      <a href="/">Home</a>
+      <i class="fas fa-chevron-right" style="font-size:0.6rem;"></i>
+      <span>Services</span>
+    </div>
+  </section>
+
+  <section class="services-section">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Rudhra Managements</span>
+      <h2>Our <span>Services</span></h2>
+      <p>Rudhra Managements performs Solar and Wind O&amp;M. Our specialized offerings include drone thermography for precise asset insights, technical manpower supply ensuring seamless operations, and rigorous inspection and testing of electrical equipment.</p>
+    </div>
+
+    <div class="services-grid">
+      <a href="#" class="service-card reveal d1">
+        <div class="service-img-wrap"><img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=600&q=80" alt="Solar Operations & Maintenance"></div>
+        <div class="service-content">
+          <h3>Solar Operations &amp; Maintenance</h3>
+          <span class="read-more-link">Read More <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+      
+      <a href="#" class="service-card reveal d2">
+        <div class="service-img-wrap"><img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15f?auto=format&fit=crop&w=600&q=80" alt="E-Waste Management"></div>
+        <div class="service-content">
+          <h3>E-Waste Management</h3>
+          <span class="read-more-link">Read More <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+      
+      <a href="#" class="service-card reveal d3">
+        <div class="service-img-wrap"><img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=600&q=80" alt="Inspection and Testing"></div>
+        <div class="service-content">
+          <h3>Inspection &amp; Testing</h3>
+          <span class="read-more-link">Read More <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+      
+      <a href="#" class="service-card reveal d1">
+        <div class="service-img-wrap"><img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=600&q=80" alt="Supply of O&M Spares"></div>
+        <div class="service-content">
+          <h3>Supply of O&amp;M Spares</h3>
+          <span class="read-more-link">Read More <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+      
+      <a href="#" class="service-card reveal d2">
+        <div class="service-img-wrap"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80" alt="Man Power Supply"></div>
+        <div class="service-content">
+          <h3>Man Power Supply</h3>
+          <span class="read-more-link">Read More <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+      
+      <a href="#" class="service-card reveal d3">
+        <div class="service-img-wrap"><img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=600&q=80" alt="Wind Operation & Maintenance"></div>
+        <div class="service-content">
+          <h3>Wind Operation &amp; Maintenance</h3>
+          <span class="read-more-link">Read More <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="mid-cta-section reveal">
+    <div class="mid-cta-overlay"></div>
+    <div class="mid-cta-content">
+      <h2>Maximizing Your Solar Potential Through<br><strong>Expert Maintenance</strong></h2>
+      <p>At Rudhra, customer satisfaction is our top priority. Our quality services and maintenance ensure that you get the most out of your investment in solar energy.</p>
+      <a href="#contact" class="btn btn-primary">Contact Us <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </section>
+
+  <section class="about-snippet-section">
+    <div class="about-snippet-grid">
+      <div class="about-snippet-img reveal d1">
+        <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=800&q=80" alt="About Rudhra Company">
+      </div>
+      <div class="about-snippet-content reveal d2">
+        <div class="section-head" style="margin-bottom: 24px;">
+          <span class="eyebrow">Prompt & Efficient</span>
+          <h2>About <span>Company</span></h2>
+        </div>
+        <p style="font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 20px;">Rudhra Managements Undertakes Project Work, Installation and Commissioning, Operation and Maintenance For Solar Energy Projects – Ground-based and Roof-top, and related civil work. With a team of qualified, skilled, experienced, committed workforce of 1100+, Rudhra MANAGEMENTS ACTIVE in the States of Gujarat, Rajasthan, Madhya Pradesh, Uttar Pradesh, Haryana, Delhi, Punjab, Tamilnadu, Karnataka, Andhra Pradesh, Chhatisgarh, and Maharashtra.</p>
+        <p style="font-weight: 600; color: var(--dark); font-size: 1.05rem;">We are dedicated to ensuring customer satisfaction with our performance.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="clients-section">
+    <div class="clients-inner">
+      <div class="section-head center reveal">
+        <span class="eyebrow">Trusted By</span>
+        <h2>Our Prestigious <span>Clients</span></h2>
+        <p>Revolutionizing solar ROI for leading energy conglomerates worldwide.</p>
+      </div>
+      <div class="clients-grid">
+        <div class="client-box reveal d1"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Fortum_logo.svg/200px-Fortum_logo.svg.png" alt="Fortum" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>Fortum</span>')"></div>
+        <div class="client-box reveal d2"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/NTPC_Logo.svg/200px-NTPC_Logo.svg.png" alt="NTPC" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>NTPC</span>')"></div>
+        <div class="client-box reveal d3"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Azure_Power_logo.svg/200px-Azure_Power_logo.svg.png" alt="Azure Power" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>Azure Power</span>')"></div>
+        <div class="client-box reveal d4"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Adani_2012_logo.svg/200px-Adani_2012_logo.svg.png" alt="Adani" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>Adani</span>')"></div>
+        <div class="client-box reveal d5"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Brookfield_Asset_Management_logo.svg/200px-Brookfield_Asset_Management_logo.svg.png" alt="Brookfield" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>Brookfield</span>')"></div>
+        <div class="client-box reveal d6"><span class="client-name-text">Arava Power</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section" id="contact">
+    <div class="contact-inner">
+      <div class="contact-left reveal d1">
+        <div class="section-head" style="margin-bottom: 24px;">
+          <span class="eyebrow">Why Rudhra</span>
+          <h2>Why <span>Choose</span> Us</h2>
+          <p>Rudhra Solar Greentech performs project work for installation, commissioning, operation, and maintenance for ground-based and rooftop solar energy projects.</p>
+        </div>
+        <ul class="why-list">
+          <li><i class="far fa-check-circle"></i><span>Problem Solving Attitude, Approach and Action</span></li>
+          <li><i class="far fa-check-circle"></i><span>Prompt, Efficient and Effective Services</span></li>
+          <li><i class="far fa-check-circle"></i><span>Qualified, Experienced and Skilled Workforce</span></li>
+          <li><i class="far fa-check-circle"></i><span>Regular Follow-up, Feedback &amp; Corrective Measures</span></li>
+          <li><i class="far fa-check-circle"></i><span>Services Delivered with the Right Method and Mannerism</span></li>
+        </ul>
+      </div>
+      <div class="reveal d2">
+        <div class="contact-card">
+          <h3>Contact Us</h3>
+          <p>After we get some information from you, we'll set up a time to discuss your project in detail.</p>
+          <form class="cform">
+            <input type="text" placeholder="Full Name" required>
+            <div class="cform-row">
+              <input type="tel" placeholder="Phone Number" required>
+              <input type="email" placeholder="Email Address" required>
+            </div>
+            <input type="text" placeholder="Subject">
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit" class="btn btn-primary">Submit Request <i class="fas fa-paper-plane"></i></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="/footer.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const ro = new IntersectionObserver((entries, obs) => {
+        entries.forEach(e => {
+          if (!e.isIntersecting) return;
+          e.target.classList.add('active');
+          obs.unobserve(e.target);
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+    });
+  </script>
+</body>
+</html>

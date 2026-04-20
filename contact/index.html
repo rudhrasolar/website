@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us | Rudhra Solar Energy Solutions</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css" />
+    <link rel="stylesheet" href="/shared.css" />
+    
+    <style>
+      /* ===== 1. PREMIUM DESIGN TOKENS (Rudhra THEME) ===== */
+      :root {
+        --brand-orange: #ff6b00;
+        --brand-lime: #b4f14c;
+        --bg-light: #f8fafc;
+        --bg-dark: #0f172a;
+        --text-main: #1e293b;
+        --text-muted: #64748b;
+        --surface-white: #ffffff;
+        --border-light: #e2e8f0;
+        --shadow-soft: 0 10px 40px -10px rgba(0,0,0,0.08);
+        --shadow-hover: 0 20px 40px -5px rgba(0,0,0,0.15);
+        --radius-md: 12px;
+        --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      body {
+        margin: 0; font-family: 'Poppins', sans-serif; 
+        background-color: var(--bg-light); color: var(--text-main);
+        overflow-x: hidden;
+      }
+
+      /* ===== 2. STAGGERED SCROLL REVEAL ===== */
+      .reveal {
+        opacity: 0; transform: translateY(40px);
+        transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: opacity, transform;
+      }
+      .reveal.active { opacity: 1; transform: translateY(0); }
+
+      /* ===== 3. PAGE BANNER ===== */
+      .page-banner {
+        margin-top: 72px; position: relative; height: 380px;
+        display: flex; align-items: center; justify-content: center;
+        overflow: hidden; background: var(--bg-dark);
+      }
+      .page-banner img {
+        position: absolute; inset: 0; width: 100%; height: 100%;
+        object-fit: cover; opacity: 0.35;
+      }
+      .page-banner-overlay {
+        position: absolute; inset: 0;
+        background: linear-gradient(to bottom, rgba(15,23,42,0.2), rgba(15,23,42,0.9));
+      }
+      .page-banner-content { position: relative; z-index: 2; text-align: center; }
+      .page-banner-content h1 {
+        font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; color: #fff;
+        letter-spacing: 2px; text-transform: uppercase; margin: 0; text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      }
+      .page-banner-breadcrumb {
+        position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 2;
+        display: flex; align-items: center; gap: 10px;
+        font-size: 0.85rem; color: rgba(255,255,255,0.6); font-weight: 500;
+      }
+      .page-banner-breadcrumb a { color: rgba(255,255,255,0.6); text-decoration: none; transition: var(--transition-smooth); }
+      .page-banner-breadcrumb a:hover { color: #fff; }
+      .page-banner-breadcrumb span { color: var(--brand-orange); }
+
+      /* ===== 4. CONTACT MAIN SECTION (Split Layout) ===== */
+      .contact-page-section { padding: 120px 20px 80px; background: var(--bg-light); }
+      .contact-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+      
+      /* Left Column: Form Card */
+      .contact-card {
+        background: var(--surface-white); padding: 50px 40px; border-radius: var(--radius-md); 
+        box-shadow: 0 25px 50px -12px rgba(0,0,0,0.1); text-align: center; border: 1px solid var(--border-light);
+        transition: var(--transition-smooth);
+      }
+      .contact-card:hover { box-shadow: var(--shadow-hover); border-color: rgba(255,107,0,0.2); }
+      .contact-card h3 { font-size: 1.8rem; font-weight: 700; color: var(--text-main); margin-bottom: 15px; }
+      .contact-card p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 30px; line-height: 1.6; }
+      
+      .contact-form { display: flex; flex-direction: column; gap: 20px; text-align: left; }
+      .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+      .contact-form input, .contact-form textarea { width: 100%; padding: 16px; background: var(--bg-light); border: 1px solid var(--border-light); border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 0.95rem; color: var(--text-main); transition: var(--transition-smooth); box-sizing: border-box; }
+      .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--brand-orange); box-shadow: 0 0 0 3px rgba(255,107,0,0.1); background: var(--surface-white); }
+      .contact-form textarea { resize: vertical; min-height: 120px; }
+            
+      .btn-primary {
+        display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--brand-orange); color: #fff;
+        font-size: 0.95rem; font-weight: 700; padding: 16px 36px; border-radius: 50px;
+        text-decoration: none; text-transform: uppercase; letter-spacing: 0.5px; transition: var(--transition-smooth);
+        box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3); border: none; cursor: pointer; width: 100%; margin-top: 10px;
+      }
+      .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(255, 107, 0, 0.4); }
+
+      /* Right Column: Info */
+      .contact-info-section { display: flex; flex-direction: column; justify-content: center; padding: 20px 0; }
+      .contact-info-section h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; color: var(--text-main); margin-bottom: 15px; }
+      .contact-info-section h2 strong { font-weight: 800; }
+      .contact-info-section > p { font-size: 1.05rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 40px; }
+
+      .info-list { display: flex; flex-direction: column; gap: 30px; }
+      .info-item { display: flex; align-items: flex-start; gap: 20px; }
+      
+      .info-icon {
+        width: 60px; height: 60px; border-radius: 50%; background: #fff4ed;
+        color: var(--brand-orange); font-size: 1.3rem; display: flex; align-items: center; justify-content: center;
+        flex-shrink: 0; box-shadow: 0 8px 16px rgba(255, 107, 0, 0.1); border: 1px solid rgba(255,107,0,0.1);
+      }
+      
+      .info-content h4 { font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin-bottom: 8px; }
+      .info-content p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
+      .info-content p strong { color: var(--text-main); font-weight: 600; display: inline-block; min-width: 140px;}
+      .info-content a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+      .info-content a:hover { color: var(--brand-orange); }
+
+      /* ===== 5. MAP SECTION ===== */
+      .map-section { padding: 0 20px 120px; background: var(--bg-light); }
+      .map-container { 
+        max-width: 1200px; margin: 0 auto; border-radius: var(--radius-md); overflow: hidden;
+        box-shadow: var(--shadow-soft); border: 1px solid var(--border-light); line-height: 0;
+      }
+      .map-container iframe { width: 100%; height: 450px; border: 0; }
+
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 992px) {
+        .contact-container { grid-template-columns: 1fr; gap: 50px; }
+        .contact-info-section { order: -1; } /* Brings text above form on mobile */
+      }
+      @media (max-width: 600px) {
+        .form-row { grid-template-columns: 1fr; }
+        .contact-card { padding: 40px 20px; }
+        .info-item { flex-direction: column; align-items: flex-start; gap: 15px; }
+        .info-content p strong { min-width: auto; display: block; margin-top: 5px; }
+        .page-banner { height: 300px; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <script src="/header.js"></script>
+
+    <section class="page-banner reveal">
+      <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1920&q=80" alt="Solar Panels Contact">
+      <div class="page-banner-overlay"></div>
+      <div class="page-banner-content">
+        <h1>Contact Us</h1>
+      </div>
+      <div class="page-banner-breadcrumb">
+        <a href="/">Home</a>
+        <i class="fas fa-chevron-right" style="font-size:0.6rem;"></i>
+        <span>Contact Us</span>
+      </div>
+    </section>
+
+    <section class="contact-page-section">
+      <div class="contact-container">
+        
+        <div class="contact-card reveal stagger-1">
+          <h3>Get A Free Quote</h3>
+          <p>After we get some information from you, we'll set up a time to discuss your project in further detail.</p>
+          
+          <form class="contact-form">
+            <input type="text" placeholder="Name" required>
+            <div class="form-row">
+              <input type="tel" placeholder="Phone" required>
+              <input type="email" placeholder="Email" required>
+            </div>
+            <input type="text" placeholder="Subject">
+            <textarea placeholder="Message" required></textarea>
+
+            <button type="submit" class="btn-primary">SUBMIT</button>
+          </form>
+        </div>
+
+        <div class="contact-info-section reveal stagger-2">
+          <h2>How to <strong>contact</strong> us</h2>
+          <p>If you've got questions or ideas you would like to share, send a message. For anything more specific, please use one of our addresses.</p>
+          
+          <div class="info-list">
+            
+            <div class="info-item">
+              <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+              <div class="info-content">
+                <h4>Our Location</h4>
+                <p>241, HANWANT B'BJS GALI.14<br>NEAR MERI UDAN SCHOOL,<br>BJS COLONY JODHPUR-342006</p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
+              <div class="info-content">
+                <h4>Contact Numbers</h4>
+                <p>
+                  <strong>Sales &amp; Marketing:</strong> <a href="tel:+919509224116">+91 95092 24116</a><br>
+                  <strong>Procurement:</strong> <a href="tel:+919828344455">+91 98283 44455</a><br>
+                  <strong>HR &amp; Recruitment:</strong> <a href="tel:+919116729736">+91 91167 29736</a>
+                </p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon"><i class="fas fa-envelope"></i></div>
+              <div class="info-content">
+                <h4>Our Email</h4>
+                <p>
+                  <strong>Sales &amp; Marketing:</strong> <a href="mailto:Premsinghjhala@Rudhramanagements.com">Premsinghjhala@Rudhramanagements.com</a><br>
+                  <strong>Procurement:</strong> <a href="mailto:Giriraj1rathod@yahoo.com">Giriraj1rathod@yahoo.com</a><br>
+                  <strong style="visibility: hidden;">Procurement:</strong> <a href="mailto:vikram.rathore@Rudhramanagements.com">vikram.rathore@Rudhramanagements.com</a><br>
+                  <strong>HR &amp; Recruitment:</strong> <a href="mailto:hr@Rudhramanagements.com">hr@Rudhramanagements.com</a>
+                </p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon"><i class="far fa-clock"></i></div>
+              <div class="info-content">
+                <h4>Our Time</h4>
+                <p>Mon to Sat : 9:30AM to 6:30PM<br>Sun : Closed</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="map-section reveal">
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114421.3259837916!2d72.93481232872352!3d26.340026266070685!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3941f211516e45bb%3A0xc34ba79069d255d6!2sB.J.S.%20Colony%2C%20Jodhpur%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1713117456789!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </section>
+
+    <script src="/footer.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const el = entry.target;
+              let delay = 0;
+              if(el.classList.contains('stagger-1')) delay = 100;
+              if(el.classList.contains('stagger-2')) delay = 250;
+
+              setTimeout(() => {
+                el.classList.add('active');
+              }, delay);
+
+              observer.unobserve(el);
+            }
+          });
+        }, { threshold: 0.1 }); 
+        revealElements.forEach(el => revealObserver.observe(el));
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Projects | Rudhra Solar Energy Solutions</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css" />
+    <link rel="stylesheet" href="/shared.css" />
+    
+    <style>
+      /* ===== PREMIUM DESIGN TOKENS ===== */
+      :root {
+        --brand-orange: #ff6b00;
+        --brand-lime: #b4f14c;
+        --bg-light: #f8fafc;
+        --bg-dark: #0f172a;
+        --text-main: #1e293b;
+        --text-muted: #64748b;
+        --surface-white: #ffffff;
+        --border-light: #e2e8f0;
+        --shadow-soft: 0 10px 40px -10px rgba(0,0,0,0.08);
+        --shadow-hover: 0 20px 40px -5px rgba(0,0,0,0.15);
+        --radius-md: 12px;
+        --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      body {
+        margin: 0; font-family: 'Poppins', sans-serif; 
+        background-color: var(--bg-light); color: var(--text-main);
+        overflow-x: hidden;
+      }
+
+      /* ===== SCROLL REVEAL ===== */
+      .reveal {
+        opacity: 0; transform: translateY(40px);
+        transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: opacity, transform;
+      }
+      .reveal.active { opacity: 1; transform: translateY(0); }
+
+      /* ===== PAGE BANNER ===== */
+      .page-banner {
+        margin-top: 72px; position: relative; height: 380px;
+        display: flex; align-items: center; justify-content: center;
+        overflow: hidden; background: var(--bg-dark);
+      }
+      .page-banner img {
+        position: absolute; inset: 0; width: 100%; height: 100%;
+        object-fit: cover; opacity: 0.35;
+      }
+      .page-banner-overlay {
+        position: absolute; inset: 0;
+        background: linear-gradient(to bottom, rgba(15,23,42,0.2), rgba(15,23,42,0.9));
+      }
+      .page-banner-content { position: relative; z-index: 2; text-align: center; }
+      .page-banner-content h1 {
+        font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; color: #fff;
+        letter-spacing: 2px; text-transform: uppercase; margin: 0; text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      }
+      .page-banner-breadcrumb {
+        position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 2;
+        display: flex; align-items: center; gap: 10px;
+        font-size: 0.85rem; color: rgba(255,255,255,0.6); font-weight: 500;
+      }
+      .page-banner-breadcrumb a { color: rgba(255,255,255,0.6); text-decoration: none; transition: var(--transition-smooth); }
+      .page-banner-breadcrumb a:hover { color: #fff; }
+      .page-banner-breadcrumb span { color: var(--brand-orange); }
+
+      /* ===== SECTION HEADERS ===== */
+      .section-header { text-align: center; max-width: 800px; margin: 0 auto 60px; }
+      .section-subtitle { font-size: 0.85rem; font-weight: 700; color: var(--brand-orange); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; display: block; }
+      .section-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; color: var(--text-main); letter-spacing: -1px; margin-bottom: 20px; }
+      .section-title strong { font-weight: 800; }
+
+      /* ===== 1. DETAILED PROJECTS GRID (Text Cards with Image Banners) ===== */
+      .project-details-section { padding: 100px 20px; background: var(--bg-light); }
+      .details-grid {
+        display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;
+        max-width: 1200px; margin: 0 auto;
+      }
+      .detail-card {
+        background: var(--surface-white); border: 1px solid var(--border-light);
+        border-radius: var(--radius-md); padding: 35px 30px;
+        text-align: center; box-shadow: var(--shadow-soft);
+        transition: var(--transition-smooth);
+      }
+      .detail-card:hover {
+        transform: translateY(-8px); box-shadow: var(--shadow-hover); border-color: rgba(255,107,0,0.2);
+      }
+      
+      /* Updated for Unsplash Photos */
+      .card-logo { 
+        height: 100px; margin-bottom: 25px; border-radius: 8px; 
+        overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      }
+      .card-logo img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+      .detail-card:hover .card-logo img { transform: scale(1.05); }
+      
+      .company-title { font-size: 1.1rem; font-weight: 800; color: var(--text-main); text-transform: uppercase; margin-bottom: 25px; letter-spacing: 0.5px; }
+      
+      .specs-list { display: flex; flex-direction: column; gap: 12px; }
+      .spec-row { display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 0.95rem; }
+      .spec-row span { color: var(--text-muted); font-weight: 500; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; }
+      .spec-row strong { color: var(--text-main); font-weight: 700; margin-top: 2px; }
+
+      /* ===== 2. LOCATION GRID (Image Cards) ===== */
+      .location-grid-section { padding: 100px 20px; background: var(--surface-white); border-top: 1px solid var(--border-light); }
+      .location-grid {
+        display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+        max-width: 1200px; margin: 0 auto;
+      }
+      .loc-card {
+        position: relative; border-radius: var(--radius-md); overflow: hidden;
+        aspect-ratio: 1 / 1; /* Makes them perfect squares */
+        box-shadow: var(--shadow-soft); transition: var(--transition-smooth);
+        cursor: pointer;
+      }
+      .loc-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+      
+      .loc-bg {
+        position: absolute; inset: 0; width: 100%; height: 100%;
+        object-fit: cover; transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .loc-card:hover .loc-bg { transform: scale(1.08); }
+      
+      .loc-overlay {
+        position: absolute; inset: 0;
+        background: linear-gradient(to top, rgba(15,23,42,0.95) 0%, rgba(15,23,42,0.4) 50%, transparent 100%);
+      }
+      
+      .loc-content {
+        position: absolute; bottom: 0; left: 0; width: 100%;
+        padding: 30px 20px; text-align: center; z-index: 2;
+      }
+      .loc-content h3 {
+        font-size: 1.4rem; font-weight: 800; color: #fff;
+        text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;
+      }
+      .loc-content p {
+        font-size: 0.95rem; font-weight: 600; color: var(--brand-lime); margin: 0; letter-spacing: 1px;
+      }
+
+      /* ===== MID CTA PARALLAX ===== */
+      .mid-cta-section {
+        position: relative; padding: 100px 20px; text-align: center;
+        background-color: var(--bg-dark);
+      }
+      .mid-cta-content { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
+      .mid-cta-content h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; color: #fff; margin-bottom: 30px; }
+      .mid-cta-content h2 strong { font-weight: 800; color: var(--brand-orange); }
+      .btn-primary {
+        display: inline-flex; align-items: center; justify-content: center; background: var(--brand-orange); color: #fff;
+        font-size: 1rem; font-weight: 700; padding: 16px 40px; border-radius: 50px;
+        text-decoration: none; transition: var(--transition-smooth); border: none; cursor: pointer;
+      }
+      .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(255, 107, 0, 0.4); }
+
+      /* ===== RESPONSIVE ===== */
+      @media(max-width: 992px) {
+        .details-grid, .location-grid { grid-template-columns: repeat(2, 1fr); }
+      }
+      @media(max-width: 600px) {
+        .details-grid, .location-grid { grid-template-columns: 1fr; }
+        .page-banner { height: 300px; }
+        .detail-card { padding: 30px 20px; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <script src="/header.js"></script>
+
+    <section class="page-banner reveal">
+      <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1920&q=80" alt="Solar Farm">
+      <div class="page-banner-overlay"></div>
+      <div class="page-banner-content">
+        <h1>Our Projects</h1>
+      </div>
+      <div class="page-banner-breadcrumb">
+        <a href="/">Home</a>
+        <i class="fas fa-chevron-right" style="font-size:0.6rem;"></i>
+        <span>Projects</span>
+      </div>
+    </section>
+
+    <section class="project-details-section">
+      <div class="section-header reveal">
+        <span class="section-subtitle">Portfolio</span>
+        <h2 class="section-title">Trusted by <strong>Industry Leaders</strong></h2>
+      </div>
+
+      <div class="details-grid">
+        
+        <div class="detail-card reveal stagger-1">
+          <div class="card-logo">
+            <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=400&h=160&q=80" alt="Hero Future Energies">
+          </div>
+          <h3 class="company-title">HERO FUTURE ENERGY PVT LTD</h3>
+          <div class="specs-list">
+            <div class="spec-row"><span>Categories:</span> <strong>O&amp;M services</strong></div>
+            <div class="spec-row"><span>Address:</span> <strong>Madhya Pradesh</strong></div>
+            <div class="spec-row"><span>Capacity in MW:</span> <strong>57.7</strong></div>
+            <div class="spec-row"><span>Sub:</span> <strong>132 KV</strong></div>
+          </div>
+        </div>
+
+        <div class="detail-card reveal stagger-2">
+          <div class="card-logo">
+            <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=400&h=160&q=80" alt="Hero Future Energies">
+          </div>
+          <h3 class="company-title">HERO FUTURE ENERGY PVT LTD</h3>
+          <div class="specs-list">
+            <div class="spec-row"><span>Categories:</span> <strong>O&amp;M services</strong></div>
+            <div class="spec-row"><span>Address:</span> <strong>Andhra Pradesh</strong></div>
+            <div class="spec-row"><span>Capacity in MW:</span> <strong>29.7</strong></div>
+            <div class="spec-row"><span>Sub:</span> <strong>132 KV</strong></div>
+          </div>
+        </div>
+
+        <div class="detail-card reveal stagger-3">
+          <div class="card-logo">
+            <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=400&h=160&q=80" alt="Hero Future Energies">
+          </div>
+          <h3 class="company-title">HERO FUTURE ENERGY PVT LTD</h3>
+          <div class="specs-list">
+            <div class="spec-row"><span>Categories:</span> <strong>O&amp;M services</strong></div>
+            <div class="spec-row"><span>Address:</span> <strong>Madhya Pradesh</strong></div>
+            <div class="spec-row"><span>Capacity in MW:</span> <strong>30</strong></div>
+            <div class="spec-row"><span>Sub:</span> <strong>132 KV</strong></div>
+          </div>
+        </div>
+
+        <div class="detail-card reveal stagger-1">
+          <div class="card-logo">
+            <img src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=400&h=160&q=80" alt="Welspun Energy Ltd.">
+          </div>
+          <h3 class="company-title">WELSPUN SOLAR AP PVT LTD</h3>
+          <div class="specs-list">
+            <div class="spec-row"><span>Categories:</span> <strong>O&amp;M services</strong></div>
+            <div class="spec-row"><span>Address:</span> <strong>Andhra Pradesh</strong></div>
+            <div class="spec-row"><span>Capacity in MW:</span> <strong>70</strong></div>
+            <div class="spec-row"><span>Sub:</span> <strong>132 KV</strong></div>
+          </div>
+        </div>
+
+        <div class="detail-card reveal stagger-2">
+          <div class="card-logo">
+            <img src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=400&h=160&q=80" alt="Welspun Energy Ltd.">
+          </div>
+          <h3 class="company-title">WELSPUN SOLAR AP PVT LTD</h3>
+          <div class="specs-list">
+            <div class="spec-row"><span>Categories:</span> <strong>O&amp;M services</strong></div>
+            <div class="spec-row"><span>Address:</span> <strong>Tamilnadu</strong></div>
+            <div class="spec-row"><span>Capacity in MW:</span> <strong>50</strong></div>
+            <div class="spec-row"><span>Sub:</span> <strong>132 KV</strong></div>
+          </div>
+        </div>
+
+        <div class="detail-card reveal stagger-3">
+          <div class="card-logo">
+            <img src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=400&h=160&q=80" alt="Welspun Energy Ltd.">
+          </div>
+          <h3 class="company-title">WELSPUN SOLAR AP PVT LTD</h3>
+          <div class="specs-list">
+            <div class="spec-row"><span>Categories:</span> <strong>O&amp;M services</strong></div>
+            <div class="spec-row"><span>Address:</span> <strong>Madhya Pradesh</strong></div>
+            <div class="spec-row"><span>Capacity in MW:</span> <strong>100</strong></div>
+            <div class="spec-row"><span>Sub:</span> <strong>132 KV</strong></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="location-grid-section">
+      <div class="section-header reveal">
+        <span class="section-subtitle">Global Reach</span>
+        <h2 class="section-title">Deployments <strong>Worldwide</strong></h2>
+      </div>
+
+      <div class="location-grid">
+        
+        <div class="loc-card reveal stagger-1">
+          <img src="https://images.unsplash.com/photo-1521618755572-156ae0cdd74d?auto=format&fit=crop&w=800&q=80" alt="Bhadla, India" class="loc-bg">
+          <div class="loc-overlay"></div>
+          <div class="loc-content">
+            <h3>BHADLA, INDIA</h3>
+            <p>900 MW</p>
+          </div>
+        </div>
+
+        <div class="loc-card reveal stagger-2">
+          <img src="https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&w=800&q=80" alt="Ze'elim, Israel" class="loc-bg">
+          <div class="loc-overlay"></div>
+          <div class="loc-content">
+            <h3>ZE'ELIM, ISRAEL</h3>
+            <p>120 MW</p>
+          </div>
+        </div>
+
+        <div class="loc-card reveal stagger-3">
+          <img src="https://images.unsplash.com/photo-1592833159155-c62df1b65634?auto=format&fit=crop&w=800&q=80" alt="Rewa, India" class="loc-bg">
+          <div class="loc-overlay"></div>
+          <div class="loc-content">
+            <h3>REWA, INDIA</h3>
+            <p>221 MW</p>
+          </div>
+        </div>
+
+        <div class="loc-card reveal stagger-1">
+          <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=800&q=80" alt="Bikaner, India" class="loc-bg">
+          <div class="loc-overlay"></div>
+          <div class="loc-content">
+            <h3>BIKANER, INDIA</h3>
+            <p>500 MW</p>
+          </div>
+        </div>
+
+        <div class="loc-card reveal stagger-2">
+          <img src="https://images.unsplash.com/photo-1497440001374-f26997328c1b?auto=format&fit=crop&w=800&q=80" alt="Ketura Solar, Israel" class="loc-bg">
+          <div class="loc-overlay"></div>
+          <div class="loc-content">
+            <h3>KETURA SOLAR, ISRAEL</h3>
+            <p>40 MW</p>
+          </div>
+        </div>
+
+        <div class="loc-card reveal stagger-3">
+          <img src="https://images.unsplash.com/photo-1548337138-e87d889cc369?auto=format&fit=crop&w=800&q=80" alt="Arava Sites, Israel" class="loc-bg">
+          <div class="loc-overlay"></div>
+          <div class="loc-content">
+            <h3>ARAVA SITES, ISRAEL</h3>
+            <p>30 MW</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="mid-cta-section reveal">
+      <div class="mid-cta-content">
+        <h2>Ready to optimize your <strong>Solar Assets?</strong></h2>
+        <a href="/contact/" class="btn-primary">Discuss Your Project <i class="fas fa-arrow-right" style="margin-left: 10px;"></i></a>
+      </div>
+    </section>
+
+    <script src="/footer.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const el = entry.target;
+              let delay = 0;
+              if(el.classList.contains('stagger-1')) delay = 100;
+              if(el.classList.contains('stagger-2')) delay = 250;
+              if(el.classList.contains('stagger-3')) delay = 400;
+
+              setTimeout(() => {
+                el.classList.add('active');
+              }, delay);
+
+              observer.unobserve(el);
+            }
+          });
+        }, { threshold: 0.1 }); 
+
+        revealElements.forEach(el => revealObserver.observe(el));
+      });
+    </script>
+  </body>
+</html>
