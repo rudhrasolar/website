@@ -18,13 +18,13 @@
     :root {
       --green:   #4a9e38;
       --orange:  #f48b29;
+      --eco-lime:#badb2a; /* Ecoppia Style Bright Lime Green */
       --dark:    #1e293b; /* Premium Navy/Slate for Headings */
       --darker:  #0f172a; 
       --light:   #f8fafc; /* Very soft light slate/grey */
       --white:   #ffffff;
       --muted:   #64748b; /* Soft grey for paragraphs */
       --border:  #e2e8f0;
-      --text:    #475569; /* Readable light-theme text */
       --ease:    cubic-bezier(0.25, 0.8, 0.25, 1);
     }
 
@@ -49,6 +49,9 @@
     .d4 { transition-delay: 0.32s; }
     .d5 { transition-delay: 0.40s; }
     .d6 { transition-delay: 0.48s; }
+    .d7 { transition-delay: 0.56s; }
+    .d8 { transition-delay: 0.60s; }
+    .d9 { transition-delay: 0.67s; }
 
     /* Standardized Section Headings */
     .section-head { margin-bottom: 50px; }
@@ -192,12 +195,11 @@
     .stat-lbl { display: block; font-size: 0.82rem; font-weight: 500; color: var(--muted); letter-spacing: 0.2px; }
 
     /* =========================================
-       6. ABOUT SECTION (Light Theme Version)
+       6. ABOUT SECTION
     ========================================= */
     .about-section {
-      position: relative; padding: 80px 6%; text-align: center;
-      /* Background is now a light, airy overlay */
-      background: linear-gradient(rgba(248, 250, 252, 0.88), rgba(248, 250, 252, 0.96)), url('https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1920&q=80') center/cover fixed;
+      position: relative; padding: 40px 6%; text-align: center;
+      background: linear-gradient(rgba(248, 250, 252, 0.88), rgba(248, 250, 252, 0.96)), url('/images/about-us-home-bg.jpg') center/cover fixed;
     }
     .about-inner { max-width: 840px; margin: 0 auto; position: relative; z-index: 2; }
     .about-action { margin-top: 42px; }
@@ -205,7 +207,7 @@
     /* =========================================
        7. TECHNOLOGY
     ========================================= */
-    .tech-section { padding: 60px 6%; background: var(--white); }
+    .tech-section { padding: 40px 6%; background: var(--white); }
     .tech-inner { max-width: 1040px; margin: 0 auto; }
     .tech-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 50px 60px; }
     .tech-item { position: relative; }
@@ -225,65 +227,165 @@
     .tech-action { text-align: center; margin-top: 50px; }
 
     /* =========================================
-       8. SOLUTIONS
+       8. ECOPPIA-STYLE PROJECTS SECTION
     ========================================= */
-    .solutions-section { padding: 60px 6%; background: var(--light); }
-    .solutions-inner { max-width: 1140px; margin: 0 auto; }
-    .solutions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 40px; }
+    .projects-showcase {
+      position: relative;
+      background: var(--white);
+      padding: 40px 6% 40px;
+      overflow: hidden;
+    }
     
-    .sol-card-pro {
-      background: var(--white); border: 1px solid var(--border); border-radius: 20px;
-      overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; text-decoration: none;
+    /* Half Green Grid Background (Ecoppia Fixed) */
+    .eco-bg-green {
+      position: absolute;
+      bottom: 0;
+      right: 0; /* Left side white chhodne ke liye isko right se align kiya */
+      width: 72%; /* 100% ki jagah 72% kar diya taaki left half white rahe */
+      height: 55%;
+      background-color: var(--eco-lime);
+      /* Perspective Grid Texture */
+      background-image:
+        linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index: 0;
     }
-    .sol-card-pro:hover { transform: translateY(-8px); border-color: rgba(74, 158, 56, 0.4); box-shadow: 0 20px 40px rgba(74, 158, 56, 0.08); }
-    .sol-img-wrap { width: 100%; height: 240px; position: relative; overflow: hidden; }
-    .sol-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
-    .sol-card-pro:hover .sol-img-wrap img { transform: scale(1.08); }
-    .sol-model-badge {
-      position: absolute; bottom: -16px; left: 24px; background: var(--dark); color: var(--white);
-      font-size: 1.1rem; font-weight: 900; padding: 6px 18px; border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2); border: 2px solid var(--white); z-index: 2;
+
+    .eco-inner {
+      position: relative;
+      z-index: 2; /* Keeps content above the green background */
+      max-width: 1140px;
+      margin: 0 auto;
     }
-    .sol-model-badge span { color: var(--orange); font-size: 0.65rem; font-weight: 800; text-transform: uppercase; display: block; line-height: 1; margin-bottom: 2px; }
-    .sol-content-pro { padding: 40px 24px 24px; flex-grow: 1; display: flex; flex-direction: column; }
-    .sol-content-pro p { font-size: 0.85rem; color: var(--muted); line-height: 1.65; margin-bottom: 20px; }
-    .sol-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 20px; border-top: 1px solid var(--border); }
-    .sol-tag { background: rgba(74, 158, 56, 0.08); color: var(--green); font-size: 0.68rem; font-weight: 700; padding: 6px 12px; border-radius: 50px; text-transform: uppercase; letter-spacing: 0.5px; }
-    .sol-new-dot {
-      position: absolute; top: 16px; right: 16px; background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(4px); padding: 6px 12px; border-radius: 50px; font-size: 0.65rem;
-      font-weight: 800; color: var(--orange); text-transform: uppercase; display: flex; align-items: center; gap: 6px; z-index: 2;
+
+    .eco-grid {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 60px;
     }
-    .sol-new-dot::before { content: ''; width: 6px; height: 6px; background: var(--orange); border-radius: 50%; animation: pulseDot 2s infinite; }
-    
-    @keyframes pulseDot { 0% { box-shadow: 0 0 0 0 rgba(244, 139, 41, 0.6); } 70% { box-shadow: 0 0 0 6px rgba(244, 139, 41, 0); } 100% { box-shadow: 0 0 0 0 rgba(244, 139, 41, 0); } }
-    .solutions-action { text-align: center; margin-top: 50px; }
+
+    .eco-card {
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+      transition: transform 0.4s var(--ease);
+      background: #000; /* Dark background behind image for contrast */
+    }
+    .eco-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.9;
+      transition: transform 0.7s var(--ease), opacity 0.4s;
+    }
+    .eco-card:hover img {
+      transform: scale(1.08);
+      opacity: 1;
+    }
+
+    /* Sizing for Side vs Center */
+    .eco-card.side {
+      width: 320px;
+      height: 380px;
+      z-index: 1;
+    }
+    .eco-card.center {
+      width: 420px;
+      height: 540px;
+      z-index: 2;
+      transform: translateY(-20px);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+      border: 3px solid #fff; /* Optional pop-out border */
+    }
+
+    /* Label Text on Images */
+    .eco-label {
+      position: absolute;
+      bottom: 30px;
+      left: 0; width: 100%;
+      text-align: center;
+      z-index: 3;
+      padding: 0 20px;
+    }
+    .eco-label h3 {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      margin: 0;
+    }
+    .eco-card.center .eco-label h3 {
+      font-size: 38px;
+    }
+    .eco-card.center .eco-label p {
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-top: 10px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    }
+
+    /* Ribbon for Center Image */
+    .eco-ribbon {
+      position: absolute;
+      top: 25px; right: -40px;
+      background: var(--orange);
+      color: #fff;
+      font-size: 0.75rem; font-weight: 800;
+      text-transform: uppercase;
+      padding: 8px 45px;
+      transform: rotate(45deg);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      z-index: 4;
+      letter-spacing: 1px;
+    }
+
+    /* Read More Button Area */
+    .eco-action {
+      text-align: center;
+      margin-top: 60px;
+    }
+    .eco-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      border: 2px solid var(--dark);
+      border-radius: 50px;
+      padding: 14px 36px;
+      font-size: 0.95rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;
+      color: var(--dark); background: transparent;
+      cursor: pointer; transition: all 0.3s var(--ease); text-decoration: none;
+    }
+    .eco-btn:hover {
+      background: var(--dark); color: #fff;
+      transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
 
     /* =========================================
        9. MARQUEE
     ========================================= */
     .marquee-section {
       width: 100%; overflow: hidden; background: var(--white); padding: 40px 0;
-      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
     }
     .marquee-track { display: flex; width: max-content; animation: mq 50s linear infinite; }
     .marquee-track:hover { animation-play-state: paused; }
     @keyframes mq { to { transform: translateX(-50%); } }
     .marquee-track h2 {
-      font-size: clamp(52px, 9vw, 110px); font-weight: 900; color: transparent;
-      -webkit-text-stroke: 2px #e2e8f0; text-transform: uppercase; white-space: nowrap; margin: 0; padding-right: 60px; letter-spacing: -2px;
+      font-size: clamp(52px, 9vw, 110px); font-weight: 900; color: rgb(22 25 38 / 7%);
+      text-transform: uppercase; white-space: nowrap; margin: 0; padding-right: 60px; letter-spacing: -2px;
     }
 
     /* =========================================
-       10. SUSTAINABILITY (Light Theme Version)
+       10. SUSTAINABILITY 
     ========================================= */
-    .sustain-section { padding: 60px 6%; background: var(--white); border-bottom: 1px solid var(--border); }
+    .sustain-section { padding: 40px 6%; background: var(--white); }
     .sustain-inner { max-width: 1040px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.15fr; gap: 60px; align-items: center; }
     .sustain-img-wrap { position: relative; border-radius: 8px; overflow: hidden; aspect-ratio: 4/3; }
     .sustain-img-wrap img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; }
     .sdg-badge {
-      position: absolute; top: 50%; right: 50%;     transform: translate(50%, -50%);
+      position: absolute; top: 50%; right: 50%;    transform: translate(50%, -50%);
       width: 120px; height: 120px; border-radius: 50%; background: var(--white);
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       text-align: center; padding: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.15); z-index: 3;
@@ -293,18 +395,18 @@
     .sdg-badge .sdg-main { font-size: 0.65rem; font-weight: 800; color: var(--green); text-transform: uppercase; margin-top: 2px; }
 
     /* =========================================
-       11. CLIENTS & PROJECTS & NEWS (Light)
+       11. CLIENTS & SELECTED PROJECTS & NEWS
     ========================================= */
-    .clients-section { padding: 60px 6%; background: var(--light); }
+    .clients-section { padding: 40px 6%; background: var(--light); }
     .clients-inner { max-width: 1040px; margin: 0 auto; }
-    .clients-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+    .clients-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
     .client-box {
       background: var(--white); border: 1px solid var(--border); border-radius: 4px;
-      padding: 14px 10px; aspect-ratio: 3/2; display: flex; align-items: center; justify-content: center;
+      padding: 14px 10px; aspect-ratio: 2/1; display: flex; align-items: center; justify-content: center;
       transition: all 0.25s; box-shadow: 0 2px 8px rgba(0,0,0,0.02);
     }
     .client-box:hover { border-color: var(--green); box-shadow: 0 4px 14px rgba(0,0,0,0.06); transform: translateY(-2px); }
-    .client-box img { max-width: 80%; max-height: 32px; object-fit: contain; filter: grayscale(1); opacity: 0.6; transition: all 0.25s; }
+    .client-box img { max-width: 100%; max-height: 50px; object-fit: contain; transition: all 0.25s; }
     .client-box:hover img { filter: none; opacity: 1; }
     .client-name-text { font-size: 0.68rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; }
 
@@ -324,7 +426,6 @@
     .proj-mw { display: inline-block; background: var(--orange); color: #fff; font-size: 0.65rem; font-weight: 700; padding: 4px 12px; border-radius: 3px; letter-spacing: 0.5px; }
     .projects-action { text-align: center; margin-top: 40px; }
 
-    /* News Section - Converted to Light */
     .news-section { padding: 60px 6%; background: var(--light); }
     .news-inner { max-width: 1040px; margin: 0 auto; }
     .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
@@ -345,7 +446,7 @@
     /* =========================================
        12. CONTACT
     ========================================= */
-    .contact-section { padding: 60px 6%; background: var(--white); }
+    .contact-section { padding: 40px 6%; background: var(--white); }
     .contact-inner { max-width: 1040px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
     .why-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
     .why-list li {
@@ -383,12 +484,16 @@
       .hero { height: 90vh; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 50px 30px; }
       .tech-grid { grid-template-columns: 1fr; }
-      .solutions-grid { grid-template-columns: 1fr; max-width: 480px; margin-inline: auto; }
       .sustain-inner { grid-template-columns: 1fr; }
       .projects-grid { grid-template-columns: repeat(2, 1fr); }
       .news-grid { grid-template-columns: repeat(2, 1fr); }
       .contact-inner { grid-template-columns: 1fr; }
       .clients-grid { grid-template-columns: repeat(3, 1fr); }
+
+      /* Ecoppia Section Mobile Fix */
+      .eco-grid { flex-direction: column; gap: 40px; }
+      .eco-card.side, .eco-card.center { width: 100%; max-width: 380px; height: 420px; transform: none !important; box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
+      .eco-bg-green { height: 75%; }
     }
     @media (max-width: 640px) {
       .hero { height: 100vh; }
@@ -588,61 +693,41 @@
     </div>
   </section>
 
-  <section class="solutions-section" id="solutions">
-    <div class="solutions-inner">
+  <section class="projects-showcase" id="solutions">
+    <div class="eco-bg-green"></div>
+    
+    <div class="eco-inner">
       <div class="section-head center reveal">
-        <span class="eyebrow">Services</span>
-        <h2>“Our Projects</h2>
-        <p>Versatile robotics applicable to every kind of solar site in the market.</p>
+        <h2>Our <span>Projects</span></h2>
+        <p>Versatile solutions applicable to every kind of solar site in the market</p>
       </div>
       
-      <div class="solutions-grid">
-        <a href="services.html" class="sol-card-pro reveal d1">
-          <div class="sol-img-wrap">
-            <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=600&q=80" alt="Rudhra X1">
-            <div class="sol-model-badge"><span>Model</span>X1</div>
+      <div class="eco-grid">
+        <div class="eco-card side reveal d1">
+          <img src="/images/our-project-home-image-3.jpg" alt="Bikaner">
+          <div class="eco-label">
+            <h3>Bikaner</h3>
           </div>
-          <div class="sol-content-pro">
-            <p>Optimization for large-scale utility parks, delivering peak performance in open environments with absolute zero water usage.</p>
-            <div class="sol-tags">
-              <span class="sol-tag">Utility Scale</span>
-              <span class="sol-tag">Waterless</span>
-            </div>
-          </div>
-        </a>
+        </div>
 
-        <a href="services.html" class="sol-card-pro reveal d2">
-          <div class="sol-img-wrap">
-            <div class="sol-new-dot">Next Gen</div>
-            <img src="https://images.unsplash.com/photo-1592833159155-c62df1b65634?auto=format&fit=crop&w=600&q=80" alt="Rudhra X2">
-            <div class="sol-model-badge"><span>Model</span>X2</div>
+        <div class="eco-card center reveal d2">
+          <div class="eco-ribbon">New Product</div>
+          <img src="/images/our-project-home-image-2.jpg" alt="Jaisalmer">
+          <div class="eco-label">
+            <h3>Jaisalmer</h3>
           </div>
-          <div class="sol-content-pro">
-            <p>Superior terrain handling and AI-driven obstacle navigation specifically designed for the most complex and challenging solar sites.</p>
-            <div class="sol-tags">
-              <span class="sol-tag">Terrain AI</span>
-              <span class="sol-tag">Obstacle Nav</span>
-            </div>
-          </div>
-        </a>
+        </div>
 
-        <a href="services.html" class="sol-card-pro reveal d3">
-          <div class="sol-img-wrap">
-            <img src="https://images.unsplash.com/photo-1548337138-e87d889cc369?auto=format&fit=crop&w=600&q=80" alt="Rudhra X3">
-            <div class="sol-model-badge"><span>Model</span>X3</div>
+        <div class="eco-card side reveal d3">
+          <img src="/images/our-project-home-image-1.jpg" alt="Nokhra">
+          <div class="eco-label">
+            <h3>Nokhra</h3>
           </div>
-          <div class="sol-content-pro">
-            <p>Pioneering specialized maintenance for tracking installations and highly unconventional module structures globally.</p>
-            <div class="sol-tags">
-              <span class="sol-tag">Trackers</span>
-              <span class="sol-tag">Specialized</span>
-            </div>
-          </div>
-        </a>
+        </div>
       </div>
-      
-      <div class="solutions-action reveal">
-        <a href="services.html" class="btn btn-pill">View All Solutions <i class="fas fa-arrow-right"></i></a>
+
+      <div class="eco-action reveal d4">
+        <a href="/projects/" class="eco-btn">Read More <i class="fas fa-arrow-right"></i></a>
       </div>
     </div>
   </section>
@@ -682,42 +767,15 @@
         <p>Revolutionizing solar ROI for leading energy conglomerates worldwide.</p>
       </div>
       <div class="clients-grid">
-        <div class="client-box reveal d1"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Fortum_logo.svg/200px-Fortum_logo.svg.png" alt="Fortum" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>Fortum</span>')"></div>
-        <div class="client-box reveal d2"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/NTPC_Logo.svg/200px-NTPC_Logo.svg.png" alt="NTPC" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>NTPC</span>')"></div>
-        <div class="client-box reveal d3"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Azure_Power_logo.svg/200px-Azure_Power_logo.svg.png" alt="Azure Power" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>Azure Power</span>')"></div>
-        <div class="client-box reveal d4"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Adani_2012_logo.svg/200px-Adani_2012_logo.svg.png" alt="Adani" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>Adani</span>')"></div>
-        <div class="client-box reveal d5"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Brookfield_Asset_Management_logo.svg/200px-Brookfield_Asset_Management_logo.svg.png" alt="Brookfield" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>Brookfield</span>')"></div>
-        <div class="client-box reveal d6"><span class="client-name-text">Arava Power</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="projects-section">
-    <div class="projects-inner">
-      <div class="section-head center reveal">
-        <span class="eyebrow">Case Studies</span>
-        <h2>Selected Projects</h2>
-        <p>Enhancing energy production in the most challenging environments and climates.</p>
-      </div>
-      <div class="projects-grid">
-        <a href="projects.html" class="proj-card reveal d1">
-          <div class="proj-bg" style="background-image:url('https://images.unsplash.com/photo-1521618755572-156ae0cdd74d?auto=format&fit=crop&w=800&q=80');"></div>
-          <div class="proj-grad"></div>
-          <div class="proj-info"><h3>Akin, Mexico</h3><span class="proj-mw">130 MW</span></div>
-        </a>
-        <a href="projects.html" class="proj-card reveal d2">
-          <div class="proj-bg" style="background-image:url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=800&q=80');"></div>
-          <div class="proj-grad"></div>
-          <div class="proj-info"><h3>Bhadla, India</h3><span class="proj-mw">580 MW</span></div>
-        </a>
-        <a href="projects.html" class="proj-card reveal d3">
-          <div class="proj-bg" style="background-image:url('https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&w=800&q=80');"></div>
-          <div class="proj-grad"></div>
-          <div class="proj-info"><h3>Ze'elim, Israel</h3><span class="proj-mw">120 MW</span></div>
-        </a>
-      </div>
-      <div class="projects-action reveal">
-        <a href="/projects/" class="btn btn-pill">All Projects <i class="fas fa-arrow-right"></i></a>
+        <div class="client-box reveal d1"><img src="/images/client_images/acme-solar.webp" alt="ACME" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>Fortum</span>')"></div>
+        <div class="client-box reveal d2"><img src="/images/client_images/NTPC_Logo.svg.png" alt="NTPC" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>NTPC</span>')"></div>
+        <div class="client-box reveal d3"><img src="/images/client_images/social-share-default-image.jpg" alt="Azure Power" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>Azure Power</span>')"></div>
+        <div class="client-box reveal d4"><img src="/images/client_images/Vikram_Solar_logo.svg.png" alt="Adani" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>Adani</span>')"></div>
+        <div class="client-box reveal d5"><img src="/images/client_images/WhatsApp Image 2026-02-21 at 2.53.52 PM (1).jpeg" alt="Brookfield" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>Brookfield</span>')"></div>
+        <div class="client-box reveal d6"><img src="/images/client_images/WhatsApp Image 2026-02-21 at 2.53.53 PM (1).jpeg" alt="Azure Power" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>Azure Power</span>')"></div>
+        <div class="client-box reveal d7"><img src="/images/client_images/WhatsApp Image 2026-02-21 at 2.53.53 PM (2).jpeg" alt="Adani" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>Adani</span>')"></div>
+        <div class="client-box reveal d8"><img src="/images/client_images/WhatsApp Image 2026-02-21 at 2.53.53 PM.jpeg" alt="Brookfield" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>Brookfield</span>')"></div>        
+        <div class="client-box reveal d9"><img src="/images/client_images/WhatsApp Image 2026-02-21 at 2.53.54 PM.jpeg" alt="Brookfield" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>Brookfield</span>')"></div>   
       </div>
     </div>
   </section>
@@ -794,7 +852,7 @@
         so.observe(statsEl);
       }
 
-      /* SEAMLESS DUAL-VIDEO ROTATION & SPEED CONTROL */
+      /* SEAMLESS DUAL-VIDEO ROTATION & SPEED CONTROL (BUG-FIXED) */
       const videos = [
         "videos/solar-panel-video-1.mov",
         "videos/solar-panel-video-2.mov"
@@ -805,11 +863,15 @@
       const vid2 = document.getElementById('hero-video-2');
 
       if (vid1 && vid2) {
+        // Enforce strict policies to prevent browser blocking
+        vid1.muted = true; vid1.playsInline = true;
+        vid2.muted = true; vid2.playsInline = true;
+
         // 1. Initialize first video
         vid1.src = videos[0];
         vid1.playbackRate = 1.0; 
         
-        // 2. Preload the second video in the background
+        // 2. Preload the second video
         let nextVi = (vi + 1) % videos.length;
         vid2.src = videos[nextVi];
         vid2.load();
@@ -818,30 +880,40 @@
         let hiddenVid = vid2;
 
         function handleVideoEnd() {
-          // A. Apply speed logic for the next video (index 1 is your second video)
+          // A. Apply speed logic
           if (nextVi === 1) {
-            hiddenVid.playbackRate = 1.5; // 1.5x speed for second video
+            hiddenVid.playbackRate = 1.5; 
           } else {
-            hiddenVid.playbackRate = 1.0; // Normal speed for first video
+            hiddenVid.playbackRate = 1.0; 
           }
 
-          // B. Start playing the preloaded video
-          hiddenVid.play();
-
-          // C. Crossfade Visually (CSS handles the smooth transition)
+          // FIX 1: CSS classes ko pehle change karo taaki video visible ho jaye
+          // (Is se browser ka 'Power Saving' mode trigger nahi hoga)
           hiddenVid.classList.add('active');
           activeVid.classList.remove('active');
 
-          // D. Swap variables so the old active becomes the new hidden
+          // FIX 2: Play promise ko safely handle karo
+          let playPromise = hiddenVid.play();
+          if (playPromise !== undefined) {
+            playPromise.catch(error => {
+              console.warn("Browser tried to pause video, retrying safely...", error);
+            });
+          }
+
+          // C. Swap variables
           let temp = activeVid;
           activeVid = hiddenVid;
           hiddenVid = temp;
 
-          // E. Update index and Preload the NEXT video in the background
+          // D. Update index
           vi = nextVi;
           nextVi = (vi + 1) % videos.length;
-          hiddenVid.src = videos[nextVi];
-          hiddenVid.load();
+
+          // FIX 3: Naye load request ko thoda delay do (500ms) taaki play() interrupt na ho
+          setTimeout(() => {
+            hiddenVid.src = videos[nextVi];
+            hiddenVid.load();
+          }, 500); 
         }
 
         // Attach the event listener to BOTH video tags
