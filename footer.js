@@ -80,7 +80,7 @@
       </div>
 
       <div class="footer-bottom-bar">
-        <p>Copyright © ${new Date().getFullYear()} <span class="text-orange">Rudhra Managements</span>. All rights reserved. Designed By <span class="text-orange">Vyukta</span>.</p>
+        <p>Copyright © ${new Date().getFullYear()} <span class="text-orange">Rudhra Solar GreenTech</span>. All rights reserved. Designed By <span class="text-orange">Vyukta</span>.</p>
         <button id="backToTop" class="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
       </div>
     </footer>
