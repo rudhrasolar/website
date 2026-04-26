@@ -78,11 +78,19 @@
 
       /* ===== 4. CLIENTS GRID ===== */
       .clients-section { padding: 100px 20px; background-color: var(--bg-light); text-align: center; border-bottom: 1px solid var(--border-light); }
-      .clients-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px; max-width: 1200px; margin: 0 auto; }
+      .clients-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; max-width: 1200px; margin: 0 auto; }
       .client-logo-box {
         background-color: var(--surface-white); padding: 30px; aspect-ratio: 3 / 2; display: flex; align-items: center; justify-content: center;
         transition: var(--transition-smooth); border-radius: var(--radius-md); box-shadow: var(--shadow-soft); border: 1px solid var(--border-light);
       }
+      .client-box {
+      background: var(--white); border: 1px solid var(--border); border-radius: 4px;
+      padding: 14px 10px; aspect-ratio: 2/1; display: flex; align-items: center; justify-content: center;
+      transition: all 0.25s; box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+    .client-box:hover { border-color: var(--green); box-shadow: 0 4px 14px rgba(0,0,0,0.06); transform: translateY(-2px); }
+    .client-box img { max-width: 100%; max-height: 50px; object-fit: contain; transition: all 0.25s; }
+    .client-box:hover img { filter: none; opacity: 1; }
       .client-logo-box:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); border-color: rgba(255,107,0,0.3); }
       .client-logo-box img { max-width: 100%; max-height: 100%; object-fit: contain; filter: grayscale(100%); opacity: 0.6; transition: var(--transition-smooth); }
       .client-logo-box:hover img { filter: grayscale(0%); opacity: 1; }
@@ -163,19 +171,16 @@
       </div>
       
       <div class="clients-grid">
-        <div class="client-logo-box reveal stagger-1"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Fortum_logo.svg/2560px-Fortum_logo.svg.png" alt="Fortum"></div>
-        <div class="client-logo-box reveal stagger-2"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/NTPC_Logo.svg/1200px-NTPC_Logo.svg.png" alt="NTPC"></div>
-        <div class="client-logo-box reveal stagger-3"><img src="https://via.placeholder.com/150x50/ffffff/1e293b?text=Azure+Power" alt="Azure Power"></div>
-        <div class="client-logo-box reveal stagger-4"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Adani_Group_logo.svg/2560px-Adani_Group_logo.svg.png" alt="Adani Solar"></div>
-        <div class="client-logo-box reveal stagger-5"><img src="https://via.placeholder.com/150x50/ffffff/1e293b?text=Enlight" alt="Enlight"></div>
-        <div class="client-logo-box reveal stagger-6"><img src="https://via.placeholder.com/150x50/ffffff/1e293b?text=Arava+Power" alt="Arava Power"></div>
-        
-        <div class="client-logo-box reveal stagger-1"><img src="https://via.placeholder.com/150x50/ffffff/1e293b?text=ReNew+Power" alt="ReNew"></div>
-        <div class="client-logo-box reveal stagger-2"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/ENGIE_logo_2015.svg/2560px-ENGIE_logo_2015.svg.png" alt="ENGIE"></div>
-        <div class="client-logo-box reveal stagger-3"><img src="https://via.placeholder.com/150x50/ffffff/1e293b?text=Sprng+Energy" alt="Sprng"></div>
-        <div class="client-logo-box reveal stagger-4"><img src="https://via.placeholder.com/150x50/ffffff/1e293b?text=Shikun+Binui" alt="Shikun Binui"></div>
-        <div class="client-logo-box reveal stagger-5"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/TotalEnergies_logo.svg/2560px-TotalEnergies_logo.svg.png" alt="TotalEnergies"></div>
-        <div class="client-logo-box reveal stagger-6"><img src="https://via.placeholder.com/150x50/ffffff/1e293b?text=Solegreen" alt="Solegreen"></div>
+        <div class="client-box reveal d1"><img src="/images/client_images/acme-solar.webp" alt="ACME" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>Fortum</span>')"></div>
+        <div class="client-box reveal d2"><img src="/images/client_images/NTPC_Logo.svg.png" alt="NTPC" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>NTPC</span>')"></div>
+        <div class="client-box reveal d3"><img src="/images/client_images/social-share-default-image.jpg" alt="Azure Power" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>Azure Power</span>')"></div>
+        <div class="client-box reveal d4"><img src="/images/client_images/Vikram_Solar_logo.svg.png" alt="Adani" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>Adani</span>')"></div>
+        <div class="client-box reveal d5"><img src="/images/client_images/WhatsApp Image 2026-02-21 at 2.53.52 PM (1).jpeg" alt="Brookfield" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>Brookfield</span>')"></div>
+        <div class="client-box reveal d6"><img src="/images/client_images/WhatsApp Image 2026-02-21 at 2.53.53 PM (1).jpeg" alt="Azure Power" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>Azure Power</span>')"></div>
+        <div class="client-box reveal d7"><img src="/images/client_images/WhatsApp Image 2026-02-21 at 2.53.53 PM (2).jpeg" alt="Adani" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>Adani</span>')"></div>
+        <div class="client-box reveal d8"><img src="/images/client_images/WhatsApp Image 2026-02-21 at 2.53.53 PM.jpeg" alt="Brookfield" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>Brookfield</span>')"></div>
+        <div class="client-box reveal d9"><img src="/images/client_images/WAREE.jpeg" alt="WAREE" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>WAREE</span>')"></div>   
+        <div class="client-box reveal d10"><img src="/images/client_images/WhatsApp Image 2026-02-21 at 2.53.54 PM.jpeg" alt="Brookfield" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span class=\'client-name-text\'>Brookfield</span>')"></div>   
       </div>
     </section>
 
