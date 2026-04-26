@@ -133,3 +133,45 @@
     });
   }
 })();
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Yahan apna copy kiya hua Web App URL daal
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbw5FRpbEZUlS4jOB47RUhGH-UH0V3rVJyXXdNM1lhHWqTLqaUOJJKakYuGHK91Jhxgg/exec'; 
+  
+  const forms = document.querySelectorAll('.g-sheet-form');
+
+  forms.forEach(form => {
+    form.addEventListener('submit', e => {
+      e.preventDefault(); // Page refresh hone se rokega
+      
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalText = submitBtn.innerHTML;
+      
+      // Button loading state
+      submitBtn.innerHTML = 'Sending...';
+      submitBtn.disabled = true;
+
+      const formData = new FormData(form);
+
+      fetch(scriptURL, { method: 'POST', body: formData })
+        .then(response => response.json())
+        .then(data => {
+          if(data.result === "success") {
+            alert('Thank you! Your request has been sent successfully. Please check your email.');
+            form.reset(); // Form clear karega
+          } else {
+            alert('Something went wrong. Please try again.');
+          }
+        })
+        .catch(error => {
+          console.error('Error!', error.message);
+          alert('Oops! Network issue. Please try again.');
+        })
+        .finally(() => {
+          // Button wapas normal karna
+          submitBtn.innerHTML = originalText;
+          submitBtn.disabled = false;
+        });
+    });
+  });
+});
