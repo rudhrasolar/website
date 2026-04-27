@@ -13,7 +13,7 @@
           <a href="index.html" class="footer-logo-link">
             <img src="/images/logo.png" alt="Rudhra Logo" style="max-width: 180px; margin-bottom: 10px;"> 
           </a>
-          <p class="brand-desc">Rudra Solar Greentech is India's trusted solar O&M partner, committed to maximizing the performance and longevity of your solar assets through expert maintenance, skilled manpower, and cutting-edge technology.</p>
+          <p class="brand-desc">Rudhra Solar Greentech is India's trusted solar O&M partner, committed to maximizing the performance and longevity of your solar assets through expert maintenance, skilled manpower, and cutting-edge technology.</p>
         </div>
 
         <div class="footer-col accordion-col">
@@ -42,7 +42,7 @@
                 <p>Mon to Sat : 9:30AM to 6:30PM<br>Sun : Closed</p>
               </div>
               <div class="socials">
-                <a href="https://www.instagram.com/rudra_managements" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.instagram.com/Rudhra_managements" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                 <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
               </div>
             </div>
