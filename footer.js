@@ -69,7 +69,7 @@
               <div class="dept-block">
                 <h6>HR & Recruitment:</h6>
                 <a href="tel:+919116729736"><i class="fas fa-phone-alt"></i> +91 91167 29736</a>
-                <a href="mailto:hr@rudhragreen.com"><i class="fas fa-envelope"></i> hr@rudhragreen.com</a>
+                <a href="mailto:hr@rudhragreen.com"><i class="fas fa-envelope "></i> hr@rudhragreen.com</a>
               </div>
 
             </div>
